@@ -1,1 +1,1 @@
-const io = require('socketio')
+const io = require('socket.io')();
