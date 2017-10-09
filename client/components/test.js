@@ -1,3 +1,4 @@
+"use strict";
 const React = require('react');
 class Test extends React.Component {
     render(){
