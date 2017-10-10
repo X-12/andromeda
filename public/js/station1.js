@@ -4699,7 +4699,7 @@ module.exports = function(obj, fn){
 var React = __webpack_require__(5);
 var ReactDOM = __webpack_require__(43);
 var io = __webpack_require__(58);
-var Test = __webpack_require__(88);
+var Test = __webpack_require__(88)("hello");
 ReactDOM.render(React.createElement(Test, null), document.getElementById("test"));
 
 /***/ }),
@@ -30096,26 +30096,29 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 var React = __webpack_require__(5);
 
-var Test = function (_React$Component) {
-    _inherits(Test, _React$Component);
+module.exports = function (stuff) {
+    var Test = function (_React$Component) {
+        _inherits(Test, _React$Component);
 
-    function Test() {
-        _classCallCheck(this, Test);
+        function Test() {
+            _classCallCheck(this, Test);
 
-        return _possibleConstructorReturn(this, (Test.__proto__ || Object.getPrototypeOf(Test)).apply(this, arguments));
-    }
-
-    _createClass(Test, [{
-        key: "render",
-        value: function render() {
-            return React.createElement("img", { src: "https://i.vimeocdn.com/portrait/58832_300x300", alt: "" });
+            return _possibleConstructorReturn(this, (Test.__proto__ || Object.getPrototypeOf(Test)).apply(this, arguments));
         }
-    }]);
+
+        _createClass(Test, [{
+            key: "render",
+            value: function render() {
+                console.log(stuff);
+                return React.createElement("img", { src: "https://i.vimeocdn.com/portrait/58832_300x300", alt: "" });
+            }
+        }]);
+
+        return Test;
+    }(React.Component);
 
     return Test;
-}(React.Component);
-
-module.exports = Test;
+};
 
 /***/ })
 /******/ ]);

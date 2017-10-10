@@ -1,10 +1,14 @@
 "use strict";
 const React = require('react');
-class Test extends React.Component {
-    render(){
-        return (
-        <img src="https://i.vimeocdn.com/portrait/58832_300x300" alt="" />
-        )
+
+module.exports = (stuff) => {
+    class Test extends React.Component {
+        render(){
+            console.log(stuff);
+            return (
+            <img src="https://i.vimeocdn.com/portrait/58832_300x300" alt="" />
+            )
+        }
     }
+    return Test;
 }
-module.exports = Test
