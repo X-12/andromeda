@@ -1,5 +1,5 @@
 "use strict";
-import styles from "./style.scss"
+//import styles from "./style.scss"
 const React = require('react')
 const ReactDOM = require('react-dom')
 const io = require('socket.io-client')
