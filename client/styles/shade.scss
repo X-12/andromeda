@@ -1,0 +1,19 @@
+#shade{
+    &.opaque{
+        opacity:1;
+    }
+    &.visible{
+        display:block;
+    }
+    transition: opacity 2s;
+    position:absolute;
+    top:0px;
+    left:0px;
+    bottom:0px;
+    right:0px;
+    height:100%;
+    width:100%;
+    background-color:#000000;
+    opacity:0;
+    display:none;
+}

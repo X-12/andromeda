@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 94);
+/******/ 	return __webpack_require__(__webpack_require__.s = 96);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -30067,7 +30067,31 @@ Backoff.prototype.setJitter = function(jitter){
 
 
 /***/ }),
-/* 87 */
+/* 87 */,
+/* 88 */,
+/* 89 */,
+/* 90 */,
+/* 91 */,
+/* 92 */,
+/* 93 */,
+/* 94 */,
+/* 95 */,
+/* 96 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+//import styles from "./style.scss"
+
+var React = __webpack_require__(5);
+var ReactDOM = __webpack_require__(42);
+var io = __webpack_require__(57);
+var Test = __webpack_require__(97)("hello");
+
+ReactDOM.render(React.createElement(Test, null), document.getElementById("test"));
+
+/***/ }),
+/* 97 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30106,27 +30130,6 @@ module.exports = function (stuff) {
 
     return Test;
 };
-
-/***/ }),
-/* 88 */,
-/* 89 */,
-/* 90 */,
-/* 91 */,
-/* 92 */,
-/* 93 */,
-/* 94 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-//import styles from "./style.scss"
-
-var React = __webpack_require__(5);
-var ReactDOM = __webpack_require__(42);
-var io = __webpack_require__(57);
-var Test = __webpack_require__(87)("hello");
-
-ReactDOM.render(React.createElement(Test, null), document.getElementById("test"));
 
 /***/ })
 /******/ ]);
