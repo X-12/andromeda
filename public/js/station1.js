@@ -30757,7 +30757,7 @@ exports = module.exports = __webpack_require__(87)(undefined);
 
 
 // module
-exports.push([module.i, "#shade {\n  transition: opacity 2s;\n  position: absolute;\n  top: 0px;\n  left: 0px;\n  bottom: 0px;\n  right: 0px;\n  height: 100%;\n  width: 100%;\n  background-color: #000000;\n  opacity: 0;\n  display: none; }\n  #shade.opaque {\n    opacity: 1; }\n  #shade.visible {\n    display: block; }\n", ""]);
+exports.push([module.i, "#shade {\n  transition: height 0s 2s, opacity 2s 0s;\n  position: absolute;\n  top: 0px;\n  left: 0px;\n  bottom: 0px;\n  right: 0px;\n  width: 100%;\n  height: 0%;\n  background-color: #000000;\n  opacity: 0; }\n  #shade.visible {\n    height: 100%;\n    opacity: 1;\n    transition: height 0s 0s, opacity 2s 0s; }\n", ""]);
 
 // exports
 
