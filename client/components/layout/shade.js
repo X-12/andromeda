@@ -4,9 +4,16 @@ const styles = require('../../styles/layout/shade.scss')
 
 module.exports = (io) => {
     class Shade extends React.Component {
+        constructor(props){
+            super(props)
+            this.state = {visible:""}
+            io.on("Lights.on",(data)=>{
+                this.setState({visible: data ? "" : "visible"})
+            })
+        }
         render(){
             return (
-                <div id="shade"></div>
+                <div id="shade" className={this.state.visible}></div>
             )
         }
     }
