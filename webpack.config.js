@@ -2,12 +2,11 @@ const path = require('path');
 
 module.exports = {
     entry:{
-        station1: "./client/station1/main.js",
-        station2: "./client/station2/main.js"
+        station1: "./client/stations/station1.js"
     },
     output: {
         filename: "[name].js",
-        path: path.resolve(__dirname, 'public/js')
+        path: path.resolve(__dirname, 'client/build')
     },
     module: {
         loaders:[

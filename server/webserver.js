@@ -3,11 +3,17 @@ const express = require('express')
 const path = require('path')
 const app = express()
 const port = 8000
+const sendHTML = (res) => {
+    res.sendFile(path.join(__dirname,"../client","index.html"));
+}
+const sendJS = (res,string) => {
+    res.sendFile(path.join(__dirname,"../client","build/"+string+".js"))
+}
 app.get("/station1", function(req,res){
-    res.sendFile(path.join(__dirname,"../client","station1/index.html"))
+    sendHTML(res)
 })
-app.get("/station2", function(req,res){
-    res.sendFile(path.join(__dirname,"../client","station2/index.html"))
+app.get("/station1/main.js", function(req,res){
+    sendJS(res,"station1")
 })
 app.use(express.static('public'))
 app.listen(port, function(){
