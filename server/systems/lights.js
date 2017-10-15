@@ -18,3 +18,6 @@ class Lights {
         }
     }
 }
+module.exports = (io) =>{
+    return new Lights(io)
+}
