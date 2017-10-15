@@ -1,6 +1,6 @@
 "use strict";
 const React = require('react');
-const styles = require('../styles/layout/shade.scss')
+const styles = require('../../styles/layout/shade.scss')
 
 module.exports = (io) => {
     class Shade extends React.Component {
