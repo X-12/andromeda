@@ -1,6 +1,6 @@
 "use strict";
 
-module.exports = (io) =>{
+module.exports = (io,Ship) =>{
     class Lights {
         constructor(){
             this.on = false
