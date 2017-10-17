@@ -7,3 +7,7 @@ Ship.Lights = require('./systems/lights')(io,Ship)
 const port = 3000
 io.listen(port)
 console.log("Socket.IO listening on port "+port)
+io.on('connection', function(io) {
+    io.emit("Alert.change", 1)
+    console.log("sent alert")
+})
