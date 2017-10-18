@@ -1,21 +1,25 @@
 "use strict";
 
 module.exports = (io,Ship) =>{
-    class Alert {
+    const System = require("./system")(io,Ship)
+    class Alert extends System{
         constructor(){
-            this.status = 3
-            io.on("Alert.status", (value) => {
-                setStatus(value)
-            })
+            super("Alert")
+            this.set("status",3)
         }
-        setLight(value){
+        setStatus(value){
             if(typeof value == "number"){
-                this.status = value
-                io.emit("Alert.status",this.status)
+                this.set("status",value)
             }
             else{
                 console.error("Invalid type "+typeof value+" for Alert.setStatus")
             }
+        }
+        setupSocket(socket){
+            super.setupSocket(socket)
+            socket.on("Alert.setStatus", (value)=>{
+                this.setStatus(value)
+            })
         }
     }
     return new Alert()
