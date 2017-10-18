@@ -14,14 +14,14 @@ module.exports = (io,Ship) =>{
         setStatus(value){
             if(typeof value == "boolean"){
                 if(value == true){
-                    if(Ship.Power.LifeSupport < this.minpower){
+                    /*if(Ship.Power.LifeSupport < this.minpower){
                         //insufficient power
                         return
                     }
                     if(Ship.Health.LifeSupport < this.minhealth){
                         //insufficient health
                         return
-                    }
+                    }*/
                     this.status = true
                     //this.set("status",true)
                 }
