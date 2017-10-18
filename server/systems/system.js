@@ -26,6 +26,9 @@ module.exports = (io,Ship) =>{
                 this.callbacks.ident = [callback]
             }
         }
+        setupWatches(){
+            
+        }
     }
     return System
 }
