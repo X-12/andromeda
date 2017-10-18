@@ -26,6 +26,13 @@ module.exports = (io,Ship) =>{
                 this.callbacks.ident = [callback]
             }
         }
+        setupSocket(socket){
+            for(var ident in this.callbacks){
+                if(this.callbacks.hasOwnProperty(ident)){
+                    socket.emit(this.name+"."+ident,this[ident])
+                }
+            }
+        }
     }
     return System
 }

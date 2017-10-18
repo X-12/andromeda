@@ -6,9 +6,6 @@ module.exports = (io,Ship) =>{
         constructor(){
             super("Lights")
             this.set("on",false)
-            io.on("Lights.setLight", (value) => {
-                setLight(value)
-            })
         }
         setLight(value){
             if(typeof value == "boolean"){
@@ -17,6 +14,12 @@ module.exports = (io,Ship) =>{
             else{
                 console.error("Invalid type "+typeof value+" for Lights.setLight")
             }
+        }
+        setupSocket(socket){
+            super.setupSocket(socket)
+            socket.on("Lights.setLight", (value)=>{
+                this.setLight(value)
+            })
         }
     }
     return new Lights()
