@@ -1,17 +1,18 @@
 "use strict";
 
 module.exports = (io,Ship) =>{
-    class Lights {
+    const System = require("./system")(io,Ship)
+    class Lights extends System{
         constructor(){
-            this.on = false
+            super("Lights")
+            this.set("on",false)
             io.on("Lights.setLight", (value) => {
                 setLight(value)
             })
         }
         setLight(value){
             if(typeof value == "boolean"){
-                this.on = value
-                io.emit("Lights.on",this.on)
+                this.set("on",value)
             }
             else{
                 console.error("Invalid type "+typeof value+" for Lights.setLight")
