@@ -4,6 +4,7 @@ const fork = require('child_process').fork
 const webserver = fork('./server/webserver.js')
 let Ship = {}
 Ship.Lights = require('./systems/lights')(io,Ship)
+Ship.Music = require('./systems/music')(io,Ship)
 
 for(var key in Ship){
     if(Ship.hasOwnProperty(key)){
