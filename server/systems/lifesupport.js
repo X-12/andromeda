@@ -1,7 +1,8 @@
 "use strict";
 
 module.exports = (io,Ship) =>{
-    class LifeSupport {
+    const System = require("./system")(io,Ship)
+    class LifeSupport extends System {
         constructor(){
             super("LifeSupport")
             this.set("status",false)
