@@ -9,21 +9,21 @@ module.exports = (io,Ship) =>{
         set(ident,value){
             this[ident] = value
             io.emit(this.name+"."+ident,value)
-            try{
+            if(this.callbacks.hasOwnProperty(ident)){
                 for(callback in this.callbacks[ident]){
                     callback()
                 }
             }
-            catch(error){
-                this.callbacks.ident = []
+            else{
+                this.callbacks[ident] = []
             } 
         }
         watch(ident,callback){
-            try{
+            if(this.callbacks.hasOwnProperty(ident)){
                 this.callbacks[ident].push(callback)
             }
-            catch(error){
-                this.callbacks.ident = [callback]
+            else{
+                this.callbacks[ident] = [callback]
             }
         }
         setupWatches(){

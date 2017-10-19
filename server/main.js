@@ -5,6 +5,8 @@ const webserver = fork('./server/webserver.js')
 let Ship = {}
 Ship.Lights = require('./systems/lights')(io,Ship)
 Ship.Health = require('./systems/health')(io,Ship)
+Ship.Alert = require('./systems/alert')(io, Ship)
+
 for(var key in Ship){
     if(Ship.hasOwnProperty(key)){
         Ship[key].setupWatches()
