@@ -24,35 +24,36 @@ module.exports = (io,Ship) =>{
                 }
                 else{
                     this.set("status",false)
-                    //this.set("status",false)
                 }
             }
             else{
                 console.error("Invalid type "+typeof value+" for LifeSupport.setStatus")
             }
         }
-        /*
         setupSocket(socket){
+            super.setupSocket(socket)
             socket.on("LifeSupport.setStatus", (value) => {
                 this.setStatus(value)
             })
         }
-        /*
         setupWatches(){
-            Ship.Power.watch("LifeSupport",this.powerChanged)
-            Ship.Health.watch("LifeSupport",this.healthChanged)
+            /*Ship.Power.watch("LifeSupport",this.powerChanged)
+            Ship.Health.watch("LifeSupport",this.healthChanged)*/
         }
-        */
-        /*
         powerChanged(){
-            //If insufficient power, turn off system
+            /*
+            if(Ship.Power.LifeSupport < this.minpower){
+                this.set("status",false)
+            }
+            */
         }
-        */
-        /*
         healthChanged(){
-            //If insufficient health, turn off system
+            /*
+            if(Ship.Health.LifeSupport < this.minpower){
+                this.set("status",false)
+            }
+            */
         }
-        */
     }
     return new LifeSupport()
 }
