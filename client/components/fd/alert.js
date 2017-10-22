@@ -16,10 +16,9 @@ module.exports = (io) => {
         render(){
             return (
                 <div>
-                    <div className="AlertFD center">Alert: {this.state.status}</div>
-                    <button className="AlertFD button red" onClick={()=>this.setStatus(1)}>1</button>
-                    <button className="AlertFD button yellow" onClick={()=>this.setStatus(2)}>2</button>
-                    <button className="AlertFD button green" onClick={()=>this.setStatus(3)}>3</button>
+                    <button className={"red " + (this.state.status == 1 ? "selected" : "")} onClick={()=>this.setStatus(1)}>1</button>
+                    <button className={"yellow " + (this.state.status == 2 ? "selected" : "")} onClick={()=>this.setStatus(2)}>2</button>
+                    <button className={"green " + (this.state.status == 3 ? "selected" : "")} onClick={()=>this.setStatus(3)}>3</button>
                 </div>
             )
         }
