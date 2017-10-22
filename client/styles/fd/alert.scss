@@ -1,0 +1,35 @@
+$red:rgb(192, 24, 24);
+$red-hover:rgb(236, 49, 49);
+$yellow:rgb(192, 192, 12);
+$yellow-hover:rgb(233, 233, 42);
+$green:rgb(11, 175, 11);
+$green-hover:rgb(24, 230, 24);
+.AlertFD.center{
+    width:100%;
+    text-align:center;
+}
+.AlertFD.button{
+    width:calc(100%/3);
+    text-align:center;
+    border:none;
+    outline:none;
+    &.red{
+        background-color:$red;
+        color:#FFFFFF;
+        &:hover{
+            background-color:$red-hover;
+        }
+    }
+    &.yellow{
+        background-color:$yellow;
+        &:hover{
+            background-color:$yellow-hover;
+        }
+    }
+    &.green{
+        background-color:$green;
+        &:hover{
+            background-color:$green-hover;
+        }
+    }
+}

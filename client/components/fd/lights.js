@@ -1,6 +1,6 @@
 "use strict";
 const React = require('react');
-
+require('../../styles/fd/lights.scss')
 module.exports = (io) => {
     class LightsFD extends React.Component {
         constructor(props){
@@ -16,9 +16,9 @@ module.exports = (io) => {
         render(){
             return (
                 <div>
-                    Lights: {this.state.on}<br />
-                    <button onClick={()=>this.setStatus(true)}>On</button>
-                    <button onClick={()=>this.setStatus(false)}>Off</button>
+                    <div className="LightsFD center">Lights: {this.state.on}</div>
+                    <button className="LightsFD button on" onClick={()=>this.setStatus(true)}>On</button>
+                    <button className="LightsFD button off" onClick={()=>this.setStatus(false)}>Off</button>
                 </div>
             )
         }
