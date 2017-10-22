@@ -7,7 +7,7 @@ module.exports = (io) => {
             super(props)
             this.state = {on:"Off"}
             io.on("Lights.on", (data) => {
-                this.setState({on:data?"On":"Off"})
+                this.setState({on:data})
             })
         }
         setStatus(data){
@@ -16,9 +16,8 @@ module.exports = (io) => {
         render(){
             return (
                 <div>
-                    <div className="LightsFD center">Lights: {this.state.on}</div>
-                    <button className="LightsFD button on" onClick={()=>this.setStatus(true)}>On</button>
-                    <button className="LightsFD button off" onClick={()=>this.setStatus(false)}>Off</button>
+                    <button className={"LightsFD on " + (this.state.on == true ? "selected" : "")} onClick={()=>this.setStatus(true)}>On</button>
+                    <button className={"LightsFD off " + (this.state.on == false ? "selected" : "")} onClick={()=>this.setStatus(false)}>Off</button>
                 </div>
             )
         }
