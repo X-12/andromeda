@@ -9,7 +9,7 @@ module.exports = (io,Ship) =>{
             this.set("Available", 0)
         }
         allocatePower(value){
-            if(typeof value.system == "string" && typeof value.power == "number"){
+            if(typeof value.system == "string" && typeof value.power == "number" && value.power >= 0){
                 if (this[value.system] > value.power) {
                     this.set("Available", (this.Available + (this[value.system] - value.power)))
                 } else {
@@ -18,7 +18,7 @@ module.exports = (io,Ship) =>{
                 this.set(this[value.system], value.power)
             }
             else{
-                console.error("Invalid type(s) " + typeof value.system + " and " + typeof value.power + " for Power.allocatePower")
+                console.error("Invalid type(s) " + typeof value.system + " and/or " + typeof value.power + " for Power.allocatePower")
             }
         }
         setupSocket(socket){
