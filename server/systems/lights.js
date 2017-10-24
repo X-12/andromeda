@@ -5,7 +5,7 @@ module.exports = (io,Ship) =>{
     class Lights extends System{
         constructor(){
             super("Lights")
-            this.set("on",false)
+            this.set("on",Ship.Defaults.Lights)
         }
         setLight(value){
             if(typeof value == "boolean"){
