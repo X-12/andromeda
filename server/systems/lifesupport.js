@@ -5,19 +5,18 @@ module.exports = (io,Ship) =>{
     class LifeSupport extends System {
         constructor(){
             super("LifeSupport")
-            this.set("status",false)
-            this.set("oxygen",100)
-            this.minpower = 50
-            this.minhealth = 50
+            this.set("status",Ship.Defaults.LifeSupport.status)
+            this.set("oxygen",Ship.Defaults.LifeSupport.oxygen)
         }
         setStatus(value){
             if(typeof value == "boolean"){
                 if(value == true){
-                    /*if(Ship.Power.LifeSupport < this.minpower){
+
+                    /*if(Ship.Power.LifeSupport < Ship.Defaults.LifeSupport.minpower){
                         //insufficient power
                         return
                     }
-                    if(Ship.Health.LifeSupport < this.minhealth){
+                    if(Ship.Health.LifeSupport < Ship.Defaults.LifeSupport.minhealth){
                         //insufficient health
                         return
                     }*/
@@ -38,22 +37,22 @@ module.exports = (io,Ship) =>{
             })
         }
         setupWatches(){
-            /*Ship.Power.watch("LifeSupport",this.powerChanged)
-            Ship.Health.watch("LifeSupport",this.healthChanged)*/
+            Ship.Power.watch("LifeSupport",this.powerChanged)
+            Ship.Health.watch("LifeSupport",this.healthChanged)
         }
         powerChanged(){
             /*
-            if(Ship.Power.LifeSupport < this.minpower){
+            if(Ship.Power.LifeSupport < Ship.Defaults.LifeSupport.minpower){
                 this.set("status",false)
-            }
-            */
+            }*/
+            
         }
         healthChanged(){
             /*
-            if(Ship.Health.LifeSupport < this.minpower){
+            if(Ship.Health.LifeSupport < Ship.Defaults.LifeSupport.minhealth){
                 this.set("status",false)
-            }
-            */
+            }*/
+            
         }
     }
     return new LifeSupport()
