@@ -5,8 +5,8 @@ module.exports = (io,Ship) =>{
     class LifeSupport extends System {
         constructor(){
             super("LifeSupport")
-            this.set("status",false)
-            this.set("oxygen",100)
+            this.set("status",Ship.Defaults.LifeSupport.status)
+            this.set("oxygen",Ship.Defaults.LifeSupport.oxygen)
             this.minpower = 50
             this.minhealth = 50
         }
