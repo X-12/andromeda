@@ -10,8 +10,8 @@ module.exports = (io,Ship) =>{
             this[ident] = value
             io.emit(this.name+"."+ident,value)
             if(this.callbacks.hasOwnProperty(ident)){
-                for(callback in this.callbacks[ident]){
-                    callback()
+                for(var i in this.callbacks[ident]){
+                    this.callbacks[ident][i]()
                 }
             }
             else{
@@ -20,7 +20,9 @@ module.exports = (io,Ship) =>{
         }
         watch(ident,callback){
             if(this.callbacks.hasOwnProperty(ident)){
+                console.log(this.callbacks[ident])
                 this.callbacks[ident].push(callback)
+                console.log(this.callbacks[ident][0])
             }
             else{
                 this.callbacks[ident] = [callback]
