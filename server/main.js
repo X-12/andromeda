@@ -8,7 +8,7 @@ Ship.Power = require('./systems/power')(io, Ship)
 Ship.Music = require('./systems/music')(io,Ship)
 Ship.Health = require('./systems/health')(io,Ship)
 Ship.Alert = require('./systems/alert')(io, Ship)
-
+Ship.Warp = require('./systems/warp')(io,Ship)
 for(var key in Ship){
     if(Ship.hasOwnProperty(key)){
         Ship[key].setupWatches()
