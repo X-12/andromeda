@@ -13,14 +13,14 @@ module.exports = (io,Ship) =>{
         setStatus(value){
             if(typeof value == "boolean"){
                 if(value == true){
-                    /*if(Ship.Power.LifeSupport < this.minpower){
+                    if(Ship.Power.LifeSupport < this.minpower){
                         //insufficient power
                         return
                     }
                     if(Ship.Health.LifeSupport < this.minhealth){
                         //insufficient health
                         return
-                    }*/
+                    }
                     this.set("status",true)
                 }
                 else{
@@ -38,22 +38,22 @@ module.exports = (io,Ship) =>{
             })
         }
         setupWatches(){
-            /*Ship.Power.watch("LifeSupport",this.powerChanged)
-            Ship.Health.watch("LifeSupport",this.healthChanged)*/
+            Ship.Power.watch("LifeSupport",this.powerChanged)
+            Ship.Health.watch("LifeSupport",this.healthChanged)
         }
         powerChanged(){
-            /*
+            
             if(Ship.Power.LifeSupport < this.minpower){
                 this.set("status",false)
             }
-            */
+            
         }
         healthChanged(){
-            /*
+            
             if(Ship.Health.LifeSupport < this.minpower){
                 this.set("status",false)
             }
-            */
+            
         }
     }
     return new LifeSupport()
