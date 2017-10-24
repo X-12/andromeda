@@ -5,8 +5,8 @@ module.exports = (io,Ship) =>{
     class Power extends System{
         constructor(){
             super("Power")
-            this.set("LifeSupport", 100)
-            this.set("Available", 0)
+            this.set("LifeSupport", Ship.Defaults.Power.LifeSupport)
+            this.set("Available", Ship.Defaults.Power.Available)
         }
         allocatePower(value){
             if(typeof value.system == "string" && typeof value.power == "number" && value.power >= 0){

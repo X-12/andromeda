@@ -5,7 +5,7 @@ module.exports = (io,Ship) =>{
     class Alert extends System{
         constructor(){
             super("Alert")
-            this.set("status",3)
+            this.set("status", Ship.Defaults.Alert.status)
         }
         setStatus(value){
             if(typeof value == "number"){
