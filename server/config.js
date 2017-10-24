@@ -13,7 +13,8 @@ module.exports = {
     LifeSupport: {
         status: false,
         oxygen: 100, 
-
+        minpower: 50,
+        minhealth: 50
     },
     Lights: {
         on: false

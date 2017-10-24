@@ -7,17 +7,15 @@ module.exports = (io,Ship) =>{
             super("LifeSupport")
             this.set("status",Ship.Defaults.LifeSupport.status)
             this.set("oxygen",Ship.Defaults.LifeSupport.oxygen)
-            this.minpower = 50
-            this.minhealth = 50
         }
         setStatus(value){
             if(typeof value == "boolean"){
                 if(value == true){
-                    /*if(Ship.Power.LifeSupport < this.minpower){
+                    /*if(Ship.Power.LifeSupport < Ship.Defaults.LifeSupport.minpower){
                         //insufficient power
                         return
                     }
-                    if(Ship.Health.LifeSupport < this.minhealth){
+                    if(Ship.Health.LifeSupport < Ship.Defaults.LifeSupport.minhealth){
                         //insufficient health
                         return
                     }*/
@@ -43,14 +41,14 @@ module.exports = (io,Ship) =>{
         }
         powerChanged(){
             /*
-            if(Ship.Power.LifeSupport < this.minpower){
+            if(Ship.Power.LifeSupport < Ship.Defaults.LifeSupport.minpower){
                 this.set("status",false)
             }
             */
         }
         healthChanged(){
             /*
-            if(Ship.Health.LifeSupport < this.minpower){
+            if(Ship.Health.LifeSupport < Ship.Defaults.LifeSupport.minhealth){
                 this.set("status",false)
             }
             */
