@@ -2,7 +2,13 @@ const path = require('path');
 
 module.exports = {
     entry:{
-        station1: "./client/stations/station1.js"
+        captain: "./client/stations/captain.js",
+        navigations: "./client/stations/navigations.js",
+        tactical: "./client/stations/tactical.js",
+        operations: "./client/stations/operations.js",
+        engineer: "./client/stations/engineer.js",
+        mvs: "./client/stations/mvs.js",
+        fd: "./client/stations/fd.js"
     },
     output: {
         filename: "[name].js",
@@ -17,7 +23,7 @@ module.exports = {
             },
             {
                 test: /\.scss$/,
-                loader: 'style-loader!css-loader!sass-loader'
+                loader: 'style-loader!css-loader?modules=true&localIdentName=[name]__[local]___[hash:base64:5]!sass-loader'
             }
         ]
     }
