@@ -3,6 +3,7 @@ const io = require('socket.io')();
 const fork = require('child_process').fork
 const webserver = fork('./server/webserver.js')
 let Ship = {}
+Ship.Defaults = require('./config.js')
 Ship.Lights = require('./systems/lights')(io,Ship)
 Ship.Music = require('./systems/music')(io,Ship)
 Ship.Health = require('./systems/health')(io,Ship)
