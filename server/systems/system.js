@@ -20,9 +20,7 @@ module.exports = (io,Ship) =>{
         }
         watch(ident,callback){
             if(this.callbacks.hasOwnProperty(ident)){
-                console.log(this.callbacks[ident])
                 this.callbacks[ident].push(callback)
-                console.log(this.callbacks[ident][0])
             }
             else{
                 this.callbacks[ident] = [callback]
