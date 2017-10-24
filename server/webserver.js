@@ -10,14 +10,20 @@ const sendHTML = (res) => {
 const sendJS = (res,string) => {
     res.sendFile(path.join(__dirname,"../client","build/"+string+".js"))
 }
-app.get("/station1/", function(req,res){
-    sendHTML(res)
-})
-app.get("/station1", function(req,res){
-    res.redirect("/station1/")
-})
-app.get("/station1/main.js", function(req,res){
-    sendJS(res,"station1")
+const routeStation = (name) => {
+    app.get("/"+name+"/", (req,res) => {
+        sendHTML(res)
+    })
+    app.get("/"+name, (req,res) => {
+        res.redirect("/"+name+"/")
+    })
+    app.get("/"+name+"/main.js", (req,res)=>{
+        sendJS(res,name)
+    })
+}
+const stations = ["captain","navigations","tactical","operations","engineer","mvs","fd"]
+stations.forEach((name)=>{
+    routeStation(name)
 })
 app.use(express.static('public'))
 app.listen(port, function(){

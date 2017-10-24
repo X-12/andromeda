@@ -14,7 +14,7 @@ module.exports = (io) => {
         }
         render(){
             return (
-                <div className={statuses[this.state.status]}>
+                <div className={styles[statuses[this.state.status]]}>
                     <h3>Alert Status: {this.state.status}</h3>
                 </div>
             )

@@ -5,8 +5,8 @@ module.exports = (io,Ship) => {
     class Health extends System {
         constructor(){
             super("Health")
-            this.set("LifeSupport",100)
-            this.set("Hull",100)
+            this.set("LifeSupport", Ship.Defaults.Health.LifeSupport)
+            this.set("Hull",Ship.Defaults.Health.Hull)
         }
     }
     return new Health()

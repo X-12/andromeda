@@ -8,12 +8,12 @@ module.exports = (io) => {
             super(props)
             this.state = {visible:""}
             io.on("Lights.on",(data)=>{
-                this.setState({visible: data ? "" : "visible"})
+                this.setState({visible: data ? "" : styles.visible})
             })
         }
         render(){
             return (
-                <div id="shade" className={this.state.visible}></div>
+                <div className={styles.shade+' '+this.state.visible}></div>
             )
         }
     }
