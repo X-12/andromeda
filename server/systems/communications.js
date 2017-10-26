@@ -8,6 +8,20 @@ module.exports = (io,Ship) =>{
         }
         setupSocket(socket){
             super.setupSocket(socket)
+            socket.on("Communications.sendMessage",(data)=>{
+                this.sendMessage(data.message,data.frequency)
+            })
+            socket.on("Communications.receiveMessage",(data)=>{
+                this.sendMessage(data.message,data.frequency)
+            })
+        }
+        sendMessage(message,frequency){
+            //if(Ship.Power > Ship.Defaults.Communications.minpower && Ship.Health > Ship.Defaults.Communications.minhealth){
+                //send message
+            //}
+        }
+        receiveMessage(message,frequency){
+            //receive message (meant to be executed by the Flight Director)
         }
     }
     return new Communications()
