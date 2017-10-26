@@ -21,7 +21,7 @@ for(var key in Ship){
 const port = 3000
 io.on("connection",(socket)=>{
     for(var key in Ship){
-        if(Ship.hasOwnProperty(key)){
+        if(Ship.hasOwnProperty(key) && key != "Defaults"){
             Ship[key].setupSocket(socket)
         }
     }
