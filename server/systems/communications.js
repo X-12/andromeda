@@ -11,8 +11,8 @@ module.exports = (io,Ship) =>{
             socket.on("Communications.sendMessage",(data)=>{
                 this.sendMessage(data.message,data.frequency)
             })
-            socket.on("Communications.receiveMessage",(data)=>{
-                this.sendMessage(data.message,data.frequency)
+            socket.on("Communications.fdsendMessage",(data)=>{
+                this.fdsendMessage(data.message,data.frequency)
             })
         }
         sendMessage(message,frequency){
@@ -20,7 +20,7 @@ module.exports = (io,Ship) =>{
                 //send message
             //}
         }
-        receiveMessage(message,frequency){
+        fdsendMessage(message,frequency){
             //receive message (meant to be executed by the Flight Director)
         }
     }
