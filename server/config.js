@@ -23,6 +23,6 @@ module.exports = {
         song: ""
     },
     Communications:{
-        networks:["Public","Starfleet","Romulan","Klingon","Ad-Hoc"]
+        networks:{"Public":{login:"none"},"Starfleet":{login:"password",password:"beammeupscotty"},"StarfleetElite":{login:"password+approval",password:"makeitso"},"Direct":{login:"approval"}}
     }
 }
