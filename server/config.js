@@ -21,5 +21,8 @@ module.exports = {
     },
     Music: {
         song: ""
+    },
+    Communications:{
+        networks:["Public","Starfleet","Romulan","Klingon","Ad-Hoc"]
     }
 }
