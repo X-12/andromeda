@@ -51,6 +51,11 @@ module.exports = (io,Ship) =>{
             }
             //}
         }
+        removeMessageFromInbox(index){
+            let newinbox = this.inbox
+            newinbox.splice(index,1)
+            this.set("inbox",newinbox)
+        }
         disconnectFromNetwork(){
             this.set("network","")
         }
