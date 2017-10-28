@@ -8,17 +8,72 @@ module.exports = (io,Ship) =>{
             this.set("network","") //Blank = not connected.
             this.set("networks",Ship.Defaults.Communications.networks)
             this.set("waiting","")
+            this.set("asking","")
             this.set("sent",[])
             this.set("inbox",[])
+            this.set("calling",false)
         }
         setupSocket(socket){
             super.setupSocket(socket)
+            socket.on("Communications.sendMessage",(data)=>{
+                this.sendMessage(data.to,data.message)
+            })
+            socket.on("Communications.addMessageToInbox",(data)=>{
+                this.addMessageToInbox(data.from,data.message)
+            })
+            socket.on("Communications.connectToNetwork",(data)=>{
+                this.connectToNetwork(data.name,data.options)
+            })
+            socket.on("Communications.removeMessageFromInbox",(data)=>{
+                this.removeMessageFromInbox(data)
+            })
+            socket.on("Communications.disconnectFromNetwork",(data)=>{
+                this.disconnectFromNetwork()
+            })
+            socket.on("Communications.cancelConnect",(data)=>{
+                this.cancelConnect()
+            })
+            socket.on("Communications.addNetwork",(data)=>{
+                this.addNetwork(data.name,data.options)
+            })
+            socket.on("Communications.removeNetwork",(data)=>{
+                this.removeNetwork(data)
+            })
+            socket.on("Communications.confirmConnect",(data)=>{
+                this.confirmConnect()
+            })
+            socket.on("Communications.rejectConnect",(data)=>{
+                this.rejectConnect()
+            })
+            socket.on("Communications.createIncomingConnect",(data)=>{
+                this.createIncomingConnect(data)
+            })
+            socket.on("Communications.rejectIncomingConnect",(data)=>{
+                this.rejectIncomingConnect()
+            })
+            socket.on("Communications.confirmIncomingConnect",(data)=>{
+                this.confirmIncomingConnect()
+            })
+            socket.on("Communications.initiateCall",(data)=>{
+                this.initiateCall()
+            })
+            socket.on("Communications.endCall",(data)=>{
+                this.endCall()
+            })
         }
         sendMessage(to,message){
             //if(Ship.Power.Communications > some value && Ship.Health.Communications > some value && this.network != ""){
             let newsent = this.sent
             newsent.push({"to":to,"message":message})
             this.set("sent",newsent)
+        }
+        initiateCall(){
+            //if(Ship.Power.Communications > some value && Ship.Health.Communications > some value && this.network == "Direct"){
+            this.set("calling",true)
+            //}
+        }
+        endCall(){
+            this.set("calling",false)
         }
         addMessageToInbox(from,message){
             let newinbox = this.inbox
@@ -59,7 +114,7 @@ module.exports = (io,Ship) =>{
         disconnectFromNetwork(){
             this.set("network","")
         }
-        stopWait(){
+        cancelConnect(){
             this.set("waiting","")
         }
         addNetwork(name,options){
@@ -78,6 +133,17 @@ module.exports = (io,Ship) =>{
         }
         rejectConnect(){
             this.set("waiting",false)
+        }
+        //These next functions are only for direct connections being made TO the ship, not the ship creating direct connections to OTHERS.
+        createIncomingConnect(from){
+            this.set("asking",from)
+        }
+        rejectIncomingConnect(){
+            this.set("asking","")
+        }
+        confirmIncomingConnect(){
+            this.set("network","Incoming")
+            this.set("asking","")
         }
     }
     return new Communications()
