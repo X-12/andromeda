@@ -21,5 +21,11 @@ module.exports = {
     },
     Music: {
         song: ""
+    },
+    Warp:{
+        Factor:1 //will change later
+    },
+    Impulse:{
+        Factor:1 // will change later
     }
 }
