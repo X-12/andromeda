@@ -9,10 +9,12 @@ Ship.Power = require('./systems/power')(io, Ship)
 Ship.Music = require('./systems/music')(io,Ship)
 Ship.Health = require('./systems/health')(io,Ship)
 Ship.Alert = require('./systems/alert')(io, Ship)
+Ship.Sensors = require('./systems/sensors')(io,Ship)
 Ship.Impulse = require('./systems/impulse')(io,Ship)
 Ship.Warp = require('./systems/warp')(io,Ship)
 Ship.LifeSupport = require('./systems/lifesupport')(io,Ship)
 Ship.Position = require('./systems/position')(io,Ship)
+Ship.Communications = require('./systems/communications')(io,Ship)
 for(var key in Ship){
     if(Ship.hasOwnProperty(key) && key != "Defaults"){
         Ship[key].setupWatches()
