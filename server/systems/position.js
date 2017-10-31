@@ -55,8 +55,8 @@ module.exports = (io,Ship) =>{
             })
         }
         setupWatches(){
-            /*Ship.WarpDrive.watch("velocity",speedChanged)
-            Ship.ImpulseDrive.watch("velocity",speedChanged*/
+            Ship.Warp.watch("speed",speedChanged)
+            Ship.Impulse.watch("speed",speedChanged)
             this.thread = fork('./server/systems/threads/position')
             this.thread.send({x:this.x,y:this.y,z:this.z,yaw:this.yaw,pitch:this.pitch,roll:this.roll,v:this.v})
             this.watch("x",this.xChanged)
@@ -111,9 +111,7 @@ module.exports = (io,Ship) =>{
             this.set("z",data.z)
         }
         speedChanged(){
-            /*
-            Set velocity accordingly
-            */
+            this.set("v",Ship.Defaults.Warp.Factor*Ship.Warp.speed,Ship.Defaults.Impulse.Factor*Ship.Impulse.speed)
         }
     }
     return new Position()
