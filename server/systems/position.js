@@ -45,6 +45,16 @@ module.exports = (io,Ship) =>{
                 this.set("roll",value)
             }
         }
+        updatePosition(){
+            let delta = this.getDelta()
+            let newx = Math.cos(this.pitch)*Math.sin(this.yaw)*this.v*(1000/delta)
+            let newy = Math.cos(this.pitch)*Math.cos(this.yaw)*this.v*(1000/delta)
+            let newz = Math.sin(this.pitch)*this.v*(1000/delta)
+            this.set("x",newx)
+            this.set("y",newy)
+            this.set("z",newz)
+            setImmediate(this.updatePosition)
+        }
         setupSocket(socket){
             super.setupSocket(socket)
             const functions = ["setX","setY","setZ","setYaw","setPitch","setRoll"]
@@ -57,58 +67,7 @@ module.exports = (io,Ship) =>{
         setupWatches(){
             Ship.Warp.watch("speed",speedChanged)
             Ship.Impulse.watch("speed",speedChanged)
-            this.thread = fork('./server/systems/threads/position')
-            this.thread.send({x:this.x,y:this.y,z:this.z,yaw:this.yaw,pitch:this.pitch,roll:this.roll,v:this.v})
-            this.watch("x",this.xChanged)
-            this.watch("y",this.yChanged)
-            this.watch("z",this.zChanged)
-            this.watch("yaw",this.yawChanged)
-            this.watch("pitch",this.pitchChanged)
-            this.watch("roll",this.rollChanged)
-            this.watch("v",this.vChanged)
-            this.thread.on('message',(data)=>{
-                this.threadChanged(data)
-            })
-        }
-        xChanged(){
-            if(this.thread != null){
-                this.thread.send({x:this.x})
-            }
-        }
-        yChanged(){
-            if(this.thread != null){
-                this.thread.send({y:this.y})
-            }
-        }
-        zChanged(){
-            if(this.thread != null){
-                this.thread.send({z:this.z})
-            }
-        }
-        yawChanged(){
-            if(this.thread != null){
-                this.thread.send({yaw:this.yaw})
-            }
-        }
-        pitchChanged(){
-            if(this.thread != null){
-                this.thread.send({pitch:this.pitch})
-            }
-        }
-        rollChanged(){
-            if(this.thread != null){
-                this.thread.send({roll:this.roll})
-            }
-        }
-        vChanged(){
-            if(this.thread != null){
-                this.thread.send({v:this.v})
-            }
-        }
-        threadChanged(data){
-            this.set("x",data.x)
-            this.set("y",data.y)
-            this.set("z",data.z)
+            setImmediate(this.updatePosition)
         }
         speedChanged(){
             this.set("v",Ship.Defaults.Warp.Factor*Ship.Warp.speed,Ship.Defaults.Impulse.Factor*Ship.Impulse.speed)
