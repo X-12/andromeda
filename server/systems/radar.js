@@ -10,7 +10,8 @@ module.exports = (io,Ship) =>{
             super.setupSocket()
         }
         setupWatches(){
-            
+
         }
     }
+    return new Radar()
 }
