@@ -65,8 +65,8 @@ module.exports = (io,Ship) =>{
             })
         }
         setupWatches(){
-            Ship.Warp.watch("speed",speedChanged)
-            Ship.Impulse.watch("speed",speedChanged)
+            Ship.Warp.watch("speed",this.speedChanged)
+            Ship.Impulse.watch("speed",this.speedChanged)
             setImmediate(()=>{this.updatePosition()})
         }
         speedChanged(){
