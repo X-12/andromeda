@@ -55,8 +55,8 @@ module.exports = (io,Ship) =>{
             })
         }
         setupWatches(){
-            Ship.Warp.watch("speed",speedChanged)
-            Ship.Impulse.watch("speed",speedChanged)
+            Ship.Warp.watch("speed",this.speedChanged)
+            Ship.Impulse.watch("speed",this.speedChanged)
             this.thread = fork('./server/systems/threads/position')
             this.thread.send({x:this.x,y:this.y,z:this.z,yaw:this.yaw,pitch:this.pitch,roll:this.roll,v:this.v})
             this.watch("x",this.xChanged)
