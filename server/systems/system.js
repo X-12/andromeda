@@ -5,13 +5,14 @@ module.exports = (io,Ship) =>{
         constructor(name){
             this.callbacks = {}
             this.name = name
+            this.lastTime = null
         }
         set(ident,value){
             this[ident] = value
             io.emit(this.name+"."+ident,value)
             if(this.callbacks.hasOwnProperty(ident)){
                 for(var i in this.callbacks[ident]){
-                    this.callbacks[ident][i]()
+                    setImmediate(this.callbacks[ident][i])
                 }
             }
             else{
@@ -34,6 +35,16 @@ module.exports = (io,Ship) =>{
                     socket.emit(this.name+"."+ident,this[ident])
                 }
             }
+        }
+        getDelta(){
+            if(this.lastTime == null){
+                this.lastTime = Date.now()
+                return 0
+            }
+            let now = Date.now()
+            let dt = now - this.lastTime
+            this.lastTime = now
+            return dt
         }
     }
     return System
