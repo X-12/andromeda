@@ -12,7 +12,7 @@ module.exports = (io,Ship) =>{
             io.emit(this.name+"."+ident,value)
             if(this.callbacks.hasOwnProperty(ident)){
                 for(var i in this.callbacks[ident]){
-                    this.callbacks[ident][i]()
+                    setImmediate(this.callbacks[ident][i])
                 }
             }
             else{
