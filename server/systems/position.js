@@ -53,7 +53,7 @@ module.exports = (io,Ship) =>{
             this.set("x",newx)
             this.set("y",newy)
             this.set("z",newz)
-            setImmediate(this.updatePosition)
+            setImmediate(()=>{this.updatePosition()})
         }
         setupSocket(socket){
             super.setupSocket(socket)
@@ -67,7 +67,7 @@ module.exports = (io,Ship) =>{
         setupWatches(){
             Ship.Warp.watch("speed",speedChanged)
             Ship.Impulse.watch("speed",speedChanged)
-            setImmediate(this.updatePosition)
+            setImmediate(()=>{this.updatePosition()})
         }
         speedChanged(){
             this.set("v",Ship.Defaults.Warp.Factor*Ship.Warp.speed,Ship.Defaults.Impulse.Factor*Ship.Impulse.speed)
