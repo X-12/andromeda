@@ -37,15 +37,15 @@ module.exports = (io,Ship) =>{
         setupSocket(socket){
             super.setupSocket(socket)
             socket.on("Objects.addObject",(data)=>{
-                this.addObject(data.name,data.type,data.position,data.velocity,data.acceleration,data.rotation,data.info)
+                this.addObject(data)
             })
             socket.on("Objects.removeObject",(data)=>{
                 this.removeObject(data)
             })
         }
-        addObject(name,type,position,velocity,acceleration,rotation,info){
+        addObject(data){
             let newobjects = this.objects
-            newobjects[uuid()] = {name:name,type:type,position:position,velocity:velocity,acceleration:acceleration,rotation:rotation,info:info}
+            newobjects[uuid()] = data
             this.set("objects",newobjects)
         }
         removeObject(uuid){
