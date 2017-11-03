@@ -27,7 +27,6 @@ module.exports = (io,Ship) =>{
                     type:"ship",
                     position:[0,0,0],
                     velocity:[1,0,0],
-                    acceleration:[0,0,0],
                     rotation:[0,0,0],
                     info:"The ship you are currently on."
                 }
@@ -53,9 +52,9 @@ module.exports = (io,Ship) =>{
             delete newobjects[uuid]
             this.set("objects",newobjects)
         }
-        updateAcceleration(uuid,acceleration){
+        updateVelocity(uuid,velocity){
             let newobjects = this.objects
-            newobjects[uuid].acceleration = acceleration
+            newobjects[uuid].velocity = velocity
             this.set("objects",newobjects)
         }
         updateObjects(){
@@ -63,8 +62,7 @@ module.exports = (io,Ship) =>{
             let newobjects = this.objects
             for(var key in newobjects){
                 if(newobjects.hasOwnProperty(key)){
-                    newobjects[key].position = add(newobjects[key].position,add(multiply(newobjects[key].acceleration,0.5*delta*delta),multiply(newobjects[key].velocity,delta)))
-                    newobjects[key].velocity = add(newobjects[key].velocity,multiply(newobjects[key].acceleration,delta))
+                    newobjects[key].position = add(newobjects[key].position,multiply(newobjects[key].velocity,delta))
                 }
             }
             this.set("objects",newobjects)
