@@ -1,2 +1,3 @@
-[lfs]
-	fetchexclude = *
+[filter "lfs"]
+	smudge = 
+	required = false
