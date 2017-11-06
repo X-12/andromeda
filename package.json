@@ -22,7 +22,8 @@
     "express": "^4.16.1",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
-    "socketio": "^1.0.0"
+    "socketio": "^1.0.0",
+    "uuid": "^3.1.0"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
