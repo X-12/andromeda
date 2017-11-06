@@ -63,3 +63,8 @@ typings/
 
 #build files
 client/build/
+
+#media folder
+public/media/*
+#exception for README.md
+!public/media/README.md
