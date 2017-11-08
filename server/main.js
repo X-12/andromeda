@@ -16,6 +16,7 @@ Ship.Warp = require('./systems/warp')(io,Ship)
 Ship.LifeSupport = require('./systems/lifesupport')(io,Ship)
 Ship.Position = require('./systems/position')(io,Ship)
 Ship.Communications = require('./systems/communications')(io,Ship)
+Ship.Repair = require('./systems/repair')(io,Ship)
 for(var key in Ship){
     if(Ship.hasOwnProperty(key) && key != "Defaults"){
         Ship[key].setupWatches()
