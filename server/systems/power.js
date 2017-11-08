@@ -5,6 +5,10 @@ module.exports = (io,Ship) =>{
     class Power extends System{
         constructor(){
             super("Power")
+            this.set("Sensors", Ship.Defaults.Power.Sensors)
+            this.set("Impulse", Ship.Defaults.Power.Impulse)
+            this.set("Warp", Ship.Defaults.Power.Warp)
+            this.set("Communications", Ship.Defaults.Power.Communications)
             this.set("LifeSupport", Ship.Defaults.Power.LifeSupport)
             this.set("Available", Ship.Defaults.Power.Available)
         }

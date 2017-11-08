@@ -1,9 +1,17 @@
 module.exports = {
     Power: {
+        Sensors: 100,
+        Impulse: 100,
+        Warp: 100,
+        Communications: 100,
         LifeSupport: 100,
         Available: 0
     },
     Health: {
+        Sensors: 100,
+        Impulse: 100,
+        Warp: 100,
+        Communications: 100,
         LifeSupport: 100,
         Hull: 100
     },
