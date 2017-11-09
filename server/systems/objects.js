@@ -57,6 +57,11 @@ module.exports = (io,Ship) =>{
             newobjects[uuid].velocity = velocity
             this.set("objects",newobjects)
         }
+        updateRotation(uuid,rotation){
+            let newobjects = this.objects
+            newobjects[uuid].rotation = rotation
+            this.set("objects",newobjects)
+        }
         updateObjects(){
             let delta = this.getDelta()/1000
             let newobjects = this.objects
@@ -67,6 +72,15 @@ module.exports = (io,Ship) =>{
             }
             this.set("objects",newobjects)
             setImmediate(()=>{this.updateObjects()})
+        }
+        impulseChanged(){
+            //set velocity accordingly
+        }
+        warpChanged(){
+            //set velocity accordingly
+        }
+        thrustersChanged(){
+            //set rotation accordingly (and/or velocity)
         }
         setupWatches(){
             this.updateObjects()
