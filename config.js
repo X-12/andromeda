@@ -33,10 +33,14 @@ module.exports = {
         song: ""
     },
     Warp:{
-        Factor:1 //will change later
+        Factor:1,
+        minhealth:50,
+        minpower:50
     },
     Impulse:{
-        Factor:1 // will change later
+        Factor:1,
+        minhealth:50,
+        minpower:50
     },
     Communications:{
         networks:{"Public":{login:"none"},"Starfleet":{login:"password",password:"beammeupscotty"},"StarfleetElite":{login:"password+approval",password:"makeitso"},"Direct":{login:"approval"}}
