@@ -5,6 +5,7 @@ module.exports = {
         Warp: 100,
         Communications: 100,
         LifeSupport: 100,
+        Radar:100,
         Available: 0
     },
     Health: {
@@ -13,7 +14,8 @@ module.exports = {
         Warp: 100,
         Communications: 100,
         LifeSupport: 100,
-        Hull: 100
+        Hull: 100,
+        Radar: 100
     },
     Alert: {
         status: 3
@@ -38,5 +40,10 @@ module.exports = {
     },
     Communications:{
         networks:{"Public":{login:"none"},"Starfleet":{login:"password",password:"beammeupscotty"},"StarfleetElite":{login:"password+approval",password:"makeitso"},"Direct":{login:"approval"}}
+    },
+    Radar:{
+        minpower:50,
+        minhealth:50,
+        Range:100
     }
 }
