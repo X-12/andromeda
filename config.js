@@ -49,5 +49,8 @@ module.exports = {
         minpower:50,
         minhealth:50,
         Range:100
+    },
+    Objectives:{
+        message:"Test"
     }
 }
