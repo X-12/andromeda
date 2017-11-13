@@ -38,5 +38,21 @@ module.exports = {
     },
     Communications:{
         networks:{"Public":{login:"none"},"Starfleet":{login:"password",password:"beammeupscotty"},"StarfleetElite":{login:"password+approval",password:"makeitso"},"Direct":{login:"approval"}}
+    },
+    Repair: {
+        steps: [
+            "test step 1",
+            "test step 2", 
+            "test step 3", 
+            "test step 4", 
+            "test step 5",
+            "test step 6", 
+            "test step 7", 
+            "test step 8", 
+            "test step 9",
+            "test step 10", 
+            "test step 11", 
+            "test step 12"
+        ]
     }
 }
