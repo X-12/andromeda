@@ -6,6 +6,7 @@ module.exports = {
         Communications: 100,
         LifeSupport: 100,
         Radar:100,
+        Targeting: 100,
         Available: 0
     },
     Health: {
@@ -15,7 +16,8 @@ module.exports = {
         Communications: 100,
         LifeSupport: 100,
         Hull: 100,
-        Radar: 100
+        Radar: 100,
+        Targeting: 100
     },
     Alert: {
         status: 3
@@ -49,5 +51,11 @@ module.exports = {
         minpower:50,
         minhealth:50,
         Range:100
+    },
+    Targeting:{
+        minpower:50,
+        minhealth:50,
+        targetrange:50,
+        loserange:70
     }
 }
