@@ -60,5 +60,8 @@ module.exports = {
         minhealth:50,
         targetrange:50,
         loserange:70
+    },
+    MVS:{
+        screen: "landing"
     }
 }
