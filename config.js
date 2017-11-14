@@ -1,3 +1,5 @@
+const Media = require("./public/media-manifest.json");
+
 module.exports = {
     Power: {
         Sensors: 100,
@@ -60,5 +62,6 @@ module.exports = {
         minhealth:50,
         targetrange:50,
         loserange:70
-    }
+    },
+    Media
 }
