@@ -26,7 +26,8 @@ module.exports = (io,Ship) =>{
                     name:"Andromeda",
                     type:"ship",
                     position:[0,0,0],
-                    velocity:[1,0,0],
+                    velocity:[0,0,0],
+                    angular:[0,0,0],
                     rotation:[0,0,0],
                     info:"The ship you are currently on."
                 }
@@ -73,14 +74,8 @@ module.exports = (io,Ship) =>{
             this.set("objects",newobjects)
             setImmediate(()=>{this.updateObjects()})
         }
-        impulseChanged(){
-            //set velocity accordingly
-        }
-        warpChanged(){
-            //set velocity accordingly
-        }
-        thrustersChanged(){
-            //set rotation accordingly (and/or velocity)
+        stuffChanged(){
+            //set velocity and angular velocity accordingly
         }
         setupWatches(){
             this.updateObjects()
