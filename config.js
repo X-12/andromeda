@@ -52,6 +52,9 @@ module.exports = {
         minhealth:50,
         Range:100
     },
+    Objectives:{
+        message:"Test"
+    },
     Targeting:{
         minpower:50,
         minhealth:50,

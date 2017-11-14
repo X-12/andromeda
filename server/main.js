@@ -5,6 +5,7 @@ const webserver = fork('./server/webserver.js')
 let Ship = {}
 Ship.Defaults = require('../config.js')
 Ship.Lights = require('./systems/lights')(io,Ship)
+Ship.Objectives = require('./systems/objectives')(io,Ship)
 Ship.Power = require('./systems/power')(io, Ship)
 Ship.Music = require('./systems/music')(io,Ship)
 Ship.Health = require('./systems/health')(io,Ship)
