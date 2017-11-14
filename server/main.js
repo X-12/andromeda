@@ -14,9 +14,9 @@ Ship.Sensors = require('./systems/sensors')(io,Ship)
 Ship.Radar = require('./systems/radar')(io, Ship)
 Ship.Objects = require('./systems/objects')(io,Ship)
 Ship.Impulse = require('./systems/impulse')(io,Ship)
+Ship.Targeting = require('./systems/targeting')(io,Ship)
 Ship.Warp = require('./systems/warp')(io,Ship)
 Ship.LifeSupport = require('./systems/lifesupport')(io,Ship)
-Ship.Position = require('./systems/position')(io,Ship)
 Ship.Communications = require('./systems/communications')(io,Ship)
 for(var key in Ship){
     if(Ship.hasOwnProperty(key) && key != "Defaults"){
