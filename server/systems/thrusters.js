@@ -22,22 +22,54 @@ module.exports = (io,Ship) =>{
             })
         }
         setX(value){
+            if(Ship.Power.Thrusters >= Ship.Defaults.Thrusters.minpower && Ship.Health.Thrusters >= Ship.Defaults.Thrusters.minhealth){
             this.set("x",value)
+            }
         }
         setY(value){
-            this.set("y", value)
+            if(Ship.Power.Thrusters >= Ship.Defaults.Thrusters.minpower && Ship.Health.Thrusters >= Ship.Defaults.Thrusters.minhealth){
+            this.set("y",value)
+            }
         }
         setZ(value){
+            if(Ship.Power.Thrusters >= Ship.Defaults.Thrusters.minpower && Ship.Health.Thrusters >= Ship.Defaults.Thrusters.minhealth){
             this.set("z",value)
+            }
         }
         setH(value){
+            if(Ship.Power.Thrusters >= Ship.Defaults.Thrusters.minpower && Ship.Health.Thrusters >= Ship.Defaults.Thrusters.minhealth){
             this.set("h",value)
+            }
         }
         setP(value){
-            this.set("p", value)
+            if(Ship.Power.Thrusters >= Ship.Defaults.Thrusters.minpower && Ship.Health.Thrusters >= Ship.Defaults.Thrusters.minhealth){
+            this.set("p",value)
+            }
         }
         setR(value){
+            if(Ship.Power.Thrusters >= Ship.Defaults.Thrusters.minpower && Ship.Health.Thrusters >= Ship.Defaults.Thrusters.minhealth){
             this.set("r",value)
+            }
+        }
+        healthChanged(){
+            if(Ship.Health.Thrusters<Ship.Defaults.Thrusters.minhealth){
+                const values = ["x","y","z","h","p","r"]
+                values.forEach((value)=>{
+                    this.set(value,0)
+                })    
+            }
+        }
+        powerChanged(){
+            if(Ship.Power.Thrusters<Ship.Defaults.Thrusters.minpower){
+                const values = ["x","y","z","h","p","r"]
+                values.forEach((value)=>{
+                    this.set(value,0)
+                })    
+            }
+        }
+        setupWatches(){
+            Ship.Health.watch("Thrusters",this.healthChanged)
+            Ship.Power.watch("Thrusters",this.powerChanged)
         }
     }
     return new Thrusters()

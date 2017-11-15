@@ -6,6 +6,7 @@ module.exports = {
         Communications: 100,
         LifeSupport: 100,
         Radar:100,
+        Thrusters:100,
         Available: 0
     },
     Health: {
@@ -15,6 +16,7 @@ module.exports = {
         Communications: 100,
         LifeSupport: 100,
         Hull: 100,
+        Thrusters:100,
         Radar: 100
     },
     Alert: {
@@ -49,5 +51,11 @@ module.exports = {
         minpower:50,
         minhealth:50,
         Range:100
+    },
+    Thrusters:{
+        Factor:1,
+        AngularFactor:Math.PI/2,
+        minhealth:50,
+        minpower:50
     }
 }
