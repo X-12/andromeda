@@ -63,7 +63,7 @@ module.exports = (io,Ship) =>{
             for(var key in newobjects){
                 if(newobjects.hasOwnProperty(key)){
                     newobjects[key].rotation = newobjects[key].rotation.multQuat(Quaternion.slerp(Quaternion.identity(),newobjects[key].angular,delta))
-                    newobjects[key].position = newobjects[key].position.add(newobjects[key].rotation.matrix().multVec3(newobjects[key].velocity).multScalar(delta))
+                    newobjects[key].position = newobjects[key].position.add(newobjects[key].rotation.rotate(newobjects[key].velocity).multScalar(delta))
                 }
             }
             this.set("objects",newobjects)
