@@ -12,6 +12,7 @@ module.exports = (io,Ship) => {
             this.set("LifeSupport", Ship.Defaults.Health.LifeSupport)
             this.set("Radar", Ship.Defaults.Health.Radar)
             this.set("Thrusters", Ship.Defaults.Health.Thrusters)
+            this.set("Targeting", Ship.Defaults.Health.Targeting)
             this.set("Hull", Ship.Defaults.Health.Hull)
         }
     }

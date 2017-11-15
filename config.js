@@ -7,6 +7,7 @@ module.exports = {
         LifeSupport: 100,
         Radar:100,
         Thrusters:100,
+        Targeting: 100,
         Available: 0
     },
     Health: {
@@ -17,7 +18,7 @@ module.exports = {
         LifeSupport: 100,
         Hull: 100,
         Thrusters:100,
-        Radar: 100
+        Targeting: 100
     },
     Alert: {
         status: 3
@@ -57,5 +58,14 @@ module.exports = {
         AngularFactor:Math.PI/2,
         minhealth:50,
         minpower:50
+    },
+    Objectives:{
+        message:"Test"
+    },
+    Targeting:{
+        minpower:50,
+        minhealth:50,
+        targetrange:50,
+        loserange:70
     }
 }
