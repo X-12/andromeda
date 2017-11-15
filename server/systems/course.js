@@ -10,9 +10,9 @@ module.exports = (io,Ship) =>{
         }
         setStatus(value){
             if(Ship.Health.Radar > Ship.Defaults.Course.mincoursehealth && Ship.Power.Radar > Ship.Defaults.Course.mincoursepower){
-                //if(Ship.Health.Thrusters >= Ship.Defaults.Course.minthrustershealth && Ship.Power.Thrusters >= Ship.Defaults.Course.minthrusterspower){
+                if(Ship.Health.Thrusters >= Ship.Defaults.Course.minthrustershealth && Ship.Power.Thrusters >= Ship.Defaults.Course.minthrusterspower){
                     this.set("status",value)
-                //}
+                }
             }
         }
         setTarget(value){
@@ -48,8 +48,11 @@ module.exports = (io,Ship) =>{
             }       
         }
         updateRotation(){
+            let delta = this.getDelta()/1000.0
             if(this.status == true){
-                //do cool stuff
+                let wantedquaternion = Quaternion.rotationFromTo([0,0,-1],Ship.Objects.objects[Ship.Objects.shipid].position.sub(this.target))
+                //interpolate between current quaternion and wanted quaternion
+                Ship.Objects.objects[Ship.Objects.shipid].rotation = Quaternion.slerp(Ship.Objects.objects[Ship.Objects.shipid].rotation,wantedquaternion,Ship.Defaults.Course.Factor*delta)
             }
             setImmediate(()=>{this.updateRotation()})
         }

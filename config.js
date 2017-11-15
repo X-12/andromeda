@@ -68,6 +68,7 @@ module.exports = {
         minthrustershealth:75,
         minthrusterspower:75,
         minradarhealth:75,
-        minradarpower:75
+        minradarpower:75,
+        Factor:0.1
     }
 }
