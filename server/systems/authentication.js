@@ -5,15 +5,15 @@ module.exports = (io,Ship) =>{
     class Authentication extends System{
         constructor(){
             super("Authentication")
-            this.set("Warp",Ship.Defaults.Authentication.Warp)
+            this.set("list",Ship.Defaults.Authentication.list)
         }
-        setStatus(system,value){
-            this[system] = value
+        add(event,data){
+            this.list.push({event,data})
         }
         setupSocket(socket){
             super.setupSocket(socket)
-            socket.on("Authentication.setStatus", (value)=>{
-                this.setStatus(value.system,value.value)
+            socket.on("Authentication.remove", (value)=>{
+                this.list.splice(value,1)
             })
         }
     }
