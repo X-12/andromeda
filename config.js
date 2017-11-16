@@ -1,4 +1,7 @@
+
 //const alfador = require("alfador")
+const Media = require("./public/media-manifest.json");
+
 module.exports = {
     Power: {
         Sensors: 100,
@@ -7,6 +10,7 @@ module.exports = {
         Communications: 100,
         LifeSupport: 100,
         Radar:100,
+        Thrusters:100,
         Targeting: 100,
         Available: 0
     },
@@ -17,7 +21,7 @@ module.exports = {
         Communications: 100,
         LifeSupport: 100,
         Hull: 100,
-        Radar: 100,
+        Thrusters:100,
         Targeting: 100
     },
     Alert: {
@@ -53,6 +57,12 @@ module.exports = {
         minhealth:50,
         Range:100
     },
+    Thrusters:{
+        Factor:1,
+        AngularFactor:Math.PI/2,
+        minhealth:50,
+        minpower:50
+    },
     Objectives:{
         message:"Test"
     },
@@ -70,5 +80,9 @@ module.exports = {
         minradarhealth:75,
         minradarpower:75,
         Factor:0.1
-    }
+    },
+    MVS:{
+        screen: "landing"
+    },
+    Media
 }

@@ -3,20 +3,9 @@
 module.exports = (io,Ship) =>{
     const System = require("./system")(io,Ship)
     const uuid = require("uuid/v4")
-    const add = (a,b) => {
-        let c = [0,0,0]
-        c[0] = b[0]+a[0]
-        c[1] = b[1]+a[1]
-        c[2] = b[2]+a[2]
-        return c
-    }
-    const multiply = (a,b) => {
-        let c = [0,0,0]
-        c[0] =a[0]*b
-        c[1] = a[1]*b
-        c[2] = a[2]*b
-        return c
-    }
+    const alfador = require("alfador")
+    const Quaternion = alfador.Quaternion
+    const Vec3 = alfador.Vec3
     class Objects extends System {
         constructor(){
             super("Objects")
@@ -25,9 +14,10 @@ module.exports = (io,Ship) =>{
                 [shipid]:{
                     name:"Andromeda",
                     type:"ship",
-                    position:[0,0,0],
-                    velocity:[1,0,0],
-                    rotation:[0,0,0],
+                    position:new Vec3([0,0,0]),
+                    velocity:new Vec3([0,0,0]),
+                    angular:Quaternion.identity(),
+                    rotation:Quaternion.identity(),
                     info:"The ship you are currently on."
                 }
             })
@@ -57,33 +47,39 @@ module.exports = (io,Ship) =>{
             newobjects[uuid].velocity = velocity
             this.set("objects",newobjects)
         }
+        updateAngular(uuid,angular){
+            let newobjects = this.objects
+            newobjects[uuid].angular = angular
+            this.set("objects",newobjects)
+        }
         updateRotation(uuid,rotation){
             let newobjects = this.objects
             newobjects[uuid].rotation = rotation
             this.set("objects",newobjects)
         }
         updateObjects(){
-            let delta = this.getDelta()/1000
+            let delta = this.getDelta()/1000.0
             let newobjects = this.objects
             for(var key in newobjects){
                 if(newobjects.hasOwnProperty(key)){
-                    newobjects[key].position = add(newobjects[key].position,multiply(newobjects[key].velocity,delta))
+                    newobjects[key].rotation = newobjects[key].rotation.multQuat(Quaternion.slerp(Quaternion.identity(),newobjects[key].angular,delta))
+                    newobjects[key].position = newobjects[key].position.add(newobjects[key].rotation.rotate(newobjects[key].velocity).multScalar(delta))
                 }
             }
             this.set("objects",newobjects)
             setImmediate(()=>{this.updateObjects()})
         }
-        impulseChanged(){
-            //set velocity accordingly
-        }
-        warpChanged(){
-            //set velocity accordingly
-        }
-        thrustersChanged(){
-            //set rotation accordingly (and/or velocity)
+        stuffChanged(){
+            this.objects[this.shipid].velocity = [Ship.Thrusters.x*Ship.Defaults.Thrusters.Factor,Ship.Thrusters.y*Ship.Defaults.Thrusters.Factor,-1*(Ship.Thrusters.z*Ship.Defaults.Thrusters.Factor+Ship.Warp.speed*Ship.Defaults.Warp.Factor+Ship.Impulse.speed*Ship.Defaults.Impulse.Factor)]
+            this.objects[this.shipid].angular = Quaternion.rotation(Ship.Thrusters.h*Ship.Defaults.Thrusters.AngularFactor,[0,-1,0]).multQuat(Quaternion.rotation(Ship.Thrusters.p*Ship.Defaults.Thrusters.AngularFactor,[-1,0,0])).multQuat(Quaternion.rotation(Ship.Thrusters.r*Ship.Defaults.Thrusters.AngularFactor,[0,0,-1]))
         }
         setupWatches(){
             this.updateObjects()
+            ["x","y","z","h","p","r"].forEach((value)=>{
+                Ship.Thrusters.watch(value,this.stuffChanged)
+            })
+            Ship.Warp.watch("speed",this.stuffChanged)
+            Ship.Impulse.watch("speed",this.stuffChanged)
         }
     }
     return new Objects()
