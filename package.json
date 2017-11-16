@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/X-12/andromeda#readme",
   "dependencies": {
+    "alfador": "^0.6.1",
     "express": "^4.16.1",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
