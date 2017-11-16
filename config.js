@@ -1,5 +1,6 @@
 
-//const alfador = require("alfador")
+const alfador = require("alfador")
+const Vec3 = alfador.Vec3
 const Media = require("./public/media-manifest.json");
 
 module.exports = {
@@ -73,7 +74,7 @@ module.exports = {
         loserange:70
     },
     Course:{
-        //target:new Vec3(0,0,0),
+        target:new Vec3(0,0,0),
         status:false,
         minthrustershealth:75,
         minthrusterspower:75,
