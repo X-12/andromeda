@@ -63,5 +63,8 @@ module.exports = {
         targetrange:50,
         loserange:70
     },
+    MVS:{
+        screen: "landing"
+    },
     Media
 }
