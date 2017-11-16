@@ -5,10 +5,10 @@ module.exports = (io,Ship) =>{
     class Authentication extends System{
         constructor(){
             super("Authentication")
-            this.set("status", Ship.Defaults.Authentication.status)
+            this.set("Warp",Ship.Defaults.Authentication.Warp)
         }
         setStatus(system,value){
-            this.status[system] = value
+            this[system] = value
         }
         setupSocket(socket){
             super.setupSocket(socket)

@@ -9,7 +9,7 @@ module.exports = (io,Ship) =>{
         }
         setSpeed(value){
             if(typeof value == "number" && 0 <= value < 10){
-                if(Ship.Power.Warp > Ship.Defaults.Warp.minpower && Ship.Health.Warp > Ship.Defaults.Warp.minhealth){
+                if(Ship.Power.Warp > Ship.Defaults.Warp.minpower && Ship.Health.Warp > Ship.Defaults.Warp.minhealth && Ship.Authentication.Warp == true){
                 this.set("speed",value)
                 }
             }
