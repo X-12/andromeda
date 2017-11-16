@@ -1,3 +1,5 @@
+const Media = require("./public/media-manifest.json");
+
 module.exports = {
     Power: {
         Sensors: 100,
@@ -63,5 +65,6 @@ module.exports = {
     },
     MVS:{
         screen: "landing"
-    }
+    },
+    Media
 }
