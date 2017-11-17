@@ -2,20 +2,18 @@
 
 module.exports = (io,Ship) =>{
     const System = require("./system")(io,Ship)
-    const distance = (p1,p2) => {
-        return distancep(p1[0],p1[1],p1[2],p2[0],p2[1],p2[2])
-    }
-    const distancep = (x1,y1,z1,x2,y2,z2) => {
-        return Math.sqrt((x2-x1)*(x2-x1)+(y2-y1)*(y2-y1)+(y2-y1)*(y2-y1))
-    }
+    const alfador = require("alfador")
+    const Quaternion = alfador.Quaternion
+    const Vec3 = alfador.Vec3
     class Radar extends System{
         constructor(){
             super("Radar")
             this.set("objects",{
             })
-            this.set("position",[0,0,0])
-            this.set("rotation",[0,0,0])
-            this.set("velocity",[0,0,0])
+            this.set("position",new Vec3([0,0,0]))
+            this.set("rotation",Quaternion.identity())
+            this.set("velocity",new Vec3([0,0,0]))
+            this.set("angular",Quaternion.identity())
         }
         setupSocket(){
             super.setupSocket()
@@ -32,9 +30,10 @@ module.exports = (io,Ship) =>{
                 this.set("position",Ship.Objects.objects[Ship.Objects.shipid].position)
                 this.set("rotation",Ship.Objects.objects[Ship.Objects.shipid].rotation)
                 this.set("velocity",Ship.Objects.objects[Ship.Objects.shipid].velocity)
+                this.set("angular",Ship.Objects.objects[Ship.Objects.shipid].angular)
                 for(key in Ship.Objects.objects){
                     if(Ship.Objects.objects.hasOwnProperty(key) && key != Ship.Objects.shipid){
-                        if(distance(this.position,Ship.Objects.objects[key]) < (Ship.Power.Radar/Ship.Defaults.Power.Radar)*Ship.Defaults.Radar.Range){
+                        if(this.position.sub(Ship.Objects.objects[key].position).length() < (Ship.Power.Radar/Ship.Defaults.Power.Radar)*Ship.Defaults.Radar.Range){
                             this.objects[key] = Ship.Objects.objects[key]
                         }
                     }
