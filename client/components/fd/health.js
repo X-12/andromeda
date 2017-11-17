@@ -1,6 +1,6 @@
 "use strict";
 const React = require('react');
-require('../../styles/fd/health.scss')
+const styles = require('../../styles/fd/health.scss')
 module.exports = (io) => {
     class HealthFD extends React.Component {
         constructor(props){

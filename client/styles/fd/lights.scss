@@ -5,11 +5,11 @@ $on-text:rgb(0, 0, 0);
 $off:rgb(59, 59, 59);
 $off-hover:rgb(87, 87, 87);
 $off-text:rgb(255, 255, 255);
-.LightsFD.on{
+.on{
     @include button($on,$on-hover,$on-text);
     width:calc(100%/2);
 }
-.LightsFD.off{
+.off{
     @include button($off,$off-hover,$off-text);
     width:calc(100%/2);
 }
