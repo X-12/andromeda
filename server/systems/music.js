@@ -5,7 +5,7 @@ module.exports = (io,Ship) =>{
     class Music extends System{
         constructor(){
             super("Music")
-            this.set("song","")
+            this.set("song", Ship.Defaults.Music.song)
         }
         setMusic(value){
             if(typeof value == "string"){
