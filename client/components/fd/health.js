@@ -18,10 +18,11 @@ module.exports = (io) => {
             return (
                 <div>
                     <ul>
-                    this.values.map((item)=><li key={item}>{this.state[item]}</li>)
+                        {this.values.map((item)=><li key={item}>{item}:{this.state[item]}</li>)}
                     </ul>
                 </div>
             )
         }
     }
+    return HealthFD
 }
