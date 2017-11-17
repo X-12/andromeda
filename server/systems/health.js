@@ -14,6 +14,15 @@ module.exports = (io,Ship) => {
             this.set("Targeting", Ship.Defaults.Health.Targeting)
             this.set("Hull", Ship.Defaults.Health.Hull)
         }
+        setupSocket(socket){
+            super.setupSocket(socket)
+            const values = ["Sensors","Impulse","Warp","Communications","LifeSupport","Radar","Targeting","Hull"]
+            values.forEach((value)=>{
+                socket.on("Health.set"+value,(data)=>{
+                    this.set(value,data)
+                })
+            })
+        }
     }
     return new Health()
 }

@@ -14,11 +14,16 @@ module.exports = (io) => {
                 })
             })
         }
+        setValue(value,data){
+            if(/^\d+$/.test(data)){
+            io.emit("Health.set"+value,parseInt(data))
+            }
+        }
         render(){
             return (
                 <div>
                     <ul>
-                        {this.values.map((item)=><li key={item}>{item}:{this.state[item]}</li>)}
+                        {this.values.map((item)=><li key={item}>{item}:{this.state[item]}<input type="text" onBlur={(event)=>{this.setValue(item,event.target.value)}} /></li>)}
                     </ul>
                 </div>
             )
