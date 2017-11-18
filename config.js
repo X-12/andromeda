@@ -41,18 +41,19 @@ module.exports = {
     },
     Repair: {
         steps: [
-            "test step 1",
-            "test step 2", 
-            "test step 3", 
-            "test step 4", 
-            "test step 5",
-            "test step 6", 
-            "test step 7", 
-            "test step 8", 
-            "test step 9",
-            "test step 10", 
-            "test step 11", 
-            "test step 12"
+            "step 1 SYSTEM",
+            "step 2", 
+            "step 3", 
+            "step 4", 
+            "step 5 SYSTEM",
+            "step 6", 
+            "step 7", 
+            "step 8", 
+            "step 9 SYSTEM",
+            "step 10", 
+            "step 11", 
+            "step 12",
+            "step 13 SYSTEM"
         ]
     }
 }
