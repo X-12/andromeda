@@ -22,6 +22,7 @@ module.exports = {
         Communications: 100,
         LifeSupport: 100,
         Hull: 100,
+        Radar: 100,
         Thrusters:100,
         Targeting: 100
     },
