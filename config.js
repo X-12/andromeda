@@ -1,3 +1,5 @@
+const Media = require("./public/media-manifest.json");
+
 module.exports = {
     Power: {
         Sensors: 100,
@@ -5,6 +7,9 @@ module.exports = {
         Warp: 100,
         Communications: 100,
         LifeSupport: 100,
+        Radar:100,
+        Thrusters:100,
+        Targeting: 100,
         Available: 0
     },
     Health: {
@@ -13,7 +18,9 @@ module.exports = {
         Warp: 100,
         Communications: 100,
         LifeSupport: 100,
-        Hull: 100
+        Hull: 100,
+        Thrusters:100,
+        Targeting: 100
     },
     Alert: {
         status: 3
@@ -31,10 +38,14 @@ module.exports = {
         song: ""
     },
     Warp:{
-        Factor:1 //will change later
+        Factor:1,
+        minhealth:50,
+        minpower:50
     },
     Impulse:{
-        Factor:1 // will change later
+        Factor:1,
+        minhealth:50,
+        minpower:50
     },
     Communications:{
         networks:{"Public":{login:"none"},"Starfleet":{login:"password",password:"beammeupscotty"},"StarfleetElite":{login:"password+approval",password:"makeitso"},"Direct":{login:"approval"}}
@@ -55,5 +66,29 @@ module.exports = {
             "step 12",
             "step 13 SYSTEM"
         ]
-    }
+    },
+    Radar:{
+        minpower:50,
+        minhealth:50,
+        Range:100
+    },
+    Thrusters:{
+        Factor:1,
+        AngularFactor:Math.PI/2,
+        minhealth:50,
+        minpower:50
+    },
+    Objectives:{
+        message:"Test"
+    },
+    Targeting:{
+        minpower:50,
+        minhealth:50,
+        targetrange:50,
+        loserange:70
+    },
+    MVS:{
+        screen: "landing"
+    },
+    Media
 }

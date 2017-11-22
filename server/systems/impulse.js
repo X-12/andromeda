@@ -9,9 +9,9 @@ module.exports = (io,Ship) =>{
         }
         setSpeed(value){
             if(typeof value == "number" && 0 <= value < 10){
-                //if(Ship.Power.Impulse > some value && Ship.Health.Impulse > some value){
+                if(Ship.Power.Impulse > Ship.Defaults.Impulse.minpower && Ship.Health.Impulse > Ship.Defaults.Impulse.minhealth){
                 this.set("speed",value)
-                //}
+                }
             }
             else{
                 console.error("Invalid type "+typeof value+" for Impulse.setSpeed")
@@ -24,23 +24,18 @@ module.exports = (io,Ship) =>{
             })
         }
         powerChanged(){
-            /*
-            if(Ship.Power.Impulse < some config value){
+            if(Ship.Power.Impulse < Ship.Defaults.Impulse.minpower){
                 this.set("speed",0)
             }
-            */
         }
         healthChanged(){
-            /*
-            if(Ship.Health.Impulse < some config value){
+            if(Ship.Health.Impulse < Ship.Defaults.Impulse.minhealth){
                 this.set("speed",0)
-            }*/
+            }
         }
         setupWatches(){
-            /*
             Ship.Power.watch("Impulse",this.powerChanged)
             Ship.Health.watch("Impulse",this.healthChanged)
-            */
         }
     }
     return new Impulse()
