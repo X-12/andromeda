@@ -53,6 +53,9 @@ module.exports = {
     Communications:{
         networks:{"Public":{login:"none"},"Starfleet":{login:"password",password:"beammeupscotty"},"StarfleetElite":{login:"password+approval",password:"makeitso"},"Direct":{login:"approval"}}
     },
+    Authentication:{
+        list:[]
+    },
     Radar:{
         minpower:50,
         minhealth:50,
