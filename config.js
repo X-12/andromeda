@@ -1,3 +1,6 @@
+
+const alfador = require("alfador")
+const Vec3 = alfador.Vec3
 const Media = require("./public/media-manifest.json");
 
 module.exports = {
@@ -69,6 +72,15 @@ module.exports = {
         minhealth:50,
         targetrange:50,
         loserange:70
+    },
+    Course:{
+        target:new Vec3(0,0,0),
+        status:false,
+        minthrustershealth:75,
+        minthrusterspower:75,
+        minradarhealth:75,
+        minradarpower:75,
+        Factor:0.1
     },
     MVS:{
         screen: "landing"
