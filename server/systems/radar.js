@@ -32,7 +32,7 @@ module.exports = (io,Ship) =>{
                 this.set("position",Ship.Objects.objects[Ship.Objects.shipid].position)
                 this.set("rotation",Ship.Objects.objects[Ship.Objects.shipid].rotation)
                 this.set("velocity",Ship.Objects.objects[Ship.Objects.shipid].velocity)
-                for(key in Ship.Objects.objects){
+                for(var key in Ship.Objects.objects){
                     if(Ship.Objects.objects.hasOwnProperty(key) && key != Ship.Objects.shipid){
                         if(distance(this.position,Ship.Objects.objects[key]) < (Ship.Power.Radar/Ship.Defaults.Power.Radar)*Ship.Defaults.Radar.Range){
                             this.objects[key] = Ship.Objects.objects[key]
