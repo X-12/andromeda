@@ -10,6 +10,7 @@ module.exports = {
         Radar:100,
         Thrusters:100,
         Targeting: 100,
+        Transporters: 100,
         Available: 0
     },
     Health: {
@@ -20,7 +21,8 @@ module.exports = {
         LifeSupport: 100,
         Hull: 100,
         Thrusters:100,
-        Targeting: 100
+        Targeting: 100,
+        Transporters: 100
     },
     Alert: {
         status: 3
@@ -73,5 +75,49 @@ module.exports = {
     MVS:{
         screen: "landing"
     },
-    Media
+    Media,
+    Transporters: {
+        minhealth: 50,
+        minpower: 50,
+        objects: [
+            {
+                residence: "Space",
+                status: 1
+            },
+            {
+                name: "Warp Coil",
+                residence: "USS Andromeda",
+                subResidence: "Engineering",
+                quantity: 20,
+                status: 3
+            },
+            {
+                name: "Warp Coil",
+                residence: "USS Andromeda",
+                subResidence: "Storage",
+                quantity: 50,
+                status: 3
+            },
+            {
+                name: "Tricorder",
+                residence: "USS Andromeda",
+                subResidence: "Sick Bay",
+                quantity: 15,
+                status: 3
+            },
+            {
+                name: "Bomb",
+                residence: "USS Andromeda",
+                quantity: 1,
+                status: 1
+            },
+            {
+                name: "Tree",
+                residence: "Earth",
+                quantity: 999999999,
+                status: 0
+            }
+        ],
+        online: true
+    }
 }
