@@ -1,0 +1,12 @@
+@mixin button($color,$hover,$text){
+    background-color:$color;
+    color:$text;
+    outline:none;
+    border:4px solid $color;
+    &:hover{
+        background-color:$hover;
+    }
+    &.selected{
+        border-color:#FFFFFF;
+    }
+}
