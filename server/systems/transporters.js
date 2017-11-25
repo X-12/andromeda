@@ -68,63 +68,54 @@ module.exports = (io,Ship) =>{
         transport(data) {
             if (this.objects[data.destination].range == 1 || this.objects[destination].override == 1){
                 let destinationKey = _.findKey(this.objects[data.destination].objects, {name: [this.objects[data.object].name], type: [this.objects[data.object].type], available: [this.objects[data.object].available]})
+                let temp = this.objects
                 if (destinationKey == undefined) {
-                    let temp = this.objects
                     temp[data.destination].objects[uuid()] = {name: [this.objects[data.object].name], type: [this.objects[data.object].name], quantity: [data.amount], available: [this.objects[data.object].available]}
                     temp[data.object].quantity = temp[data.object].quantity - amount
                     if (temp[data.object].quantity <= 0) {
                         delete temp[data.object]
                     }
-                    this.set("objects", temp)
                 } else {
-                    let temp = this.objects
                     temp[data.object].quantity = temp[data.object].quantity - amount
                     if (temp[data.object].quantity <= 0) {
                         delete temp[data.object]
                     }
                     temp[data.destination][destinationKey].quantity = temp[data.destination][destinationKey].quantity + data.amount
-                    this.set("objects", temp)
                 }
+                this.set("objects", temp)
             } else {
                 io.emit("Transporters.error", "target not within range")
             }
         }
         modify(data) {
+            let temp = this.objects
             switch (data.type) {
                 case 1:
                 //create transportable object
-                let temp = this.objects
                 temp[data.destination].objects[uuid()] = {name: [data.object.name], type: [data.object.type], quantity: [data.object.quantity], available: [data.object.available]}
-                this.set("objects", temp)
                 break
 
                 case 2:
                 //create subResidence
-                let temp = this.objects
                 temp[data.destination].subResidences[uuid()] = {name: [data.object.name], info: [data.object.info], objects: {}}
                 break
 
                 case 3:
                 //delete transportable object
-                let temp = this.objects
                 delete temp[data.object]
-                this.set("objects", temp)
-                
+                break
                 
                 case 4:
                 //delete subResidence
-                let temp = this.objects
                 delete temp[data.object]
-                this.set("objects", temp)
                 break
 
                 case 4:
                 //modify
-                let temp = this.objects
                 temp[data.object] = data.modified
-                this.set("objects", temp)
                 break
             }
+            this.set("objects", temp)
         }
         setupWatches(){
             Ship.Objects.watch("objects", this.objectsUpdated)
