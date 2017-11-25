@@ -1,0 +1,19 @@
+@import "./buttons";
+$red:rgb(192, 24, 24);
+$red-hover:rgb(236, 49, 49);
+$yellow:rgb(192, 192, 12);
+$yellow-hover:rgb(233, 233, 42);
+$green:rgb(11, 175, 11);
+$green-hover:rgb(24, 230, 24);
+.red{
+    @include button($red,$red-hover,#FFFFFF);
+    width:calc(100%/3);
+}
+.yellow{
+    @include button($yellow,$yellow-hover,#000000);
+    width:calc(100%/3);
+}
+.green{
+    @include button($green,$green-hover,#000000);
+    width:calc(100%/3);
+}
