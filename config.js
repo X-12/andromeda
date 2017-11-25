@@ -112,45 +112,7 @@ module.exports = {
     Transporters: {
         minhealth: 50,
         minpower: 50,
-        objects: [
-            {
-                residence: "Space",
-                status: 1
-            },
-            {
-                name: "Warp Coil",
-                residence: "USS Andromeda",
-                subResidence: "Engineering",
-                quantity: 20,
-                status: 3
-            },
-            {
-                name: "Warp Coil",
-                residence: "USS Andromeda",
-                subResidence: "Storage",
-                quantity: 50,
-                status: 3
-            },
-            {
-                name: "Tricorder",
-                residence: "USS Andromeda",
-                subResidence: "Sick Bay",
-                quantity: 15,
-                status: 3
-            },
-            {
-                name: "Bomb",
-                residence: "USS Andromeda",
-                quantity: 1,
-                status: 1
-            },
-            {
-                name: "Tree",
-                residence: "Earth",
-                quantity: 999999999,
-                status: 0
-            }
-        ],
+        range: 100,
         online: true
     }
 }
