@@ -74,6 +74,9 @@ module.exports = {
     Authentication:{
         list:[]
     },
+    Explosions:{
+        degreesperpixel: 0.1
+    },
     Radar:{
         minpower:50,
         minhealth:50,
