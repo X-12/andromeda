@@ -17,30 +17,28 @@ $duration:1.5s;
     opacity:0;
     transition:opacity 0.5s;
 }
-@mixin pulse{
+.red{
     animation-name: pulse;
     animation-duration: $duration;
     animation-iteration-count: infinite;
-}
-@mixin pulse2{
-    animation-name: pulse2;
-    animation-duration: $duration;
-    animation-iteration-count: 1;
-}
-.red{
-    @include pulse;
     box-shadow:inset 0px 0px $blur $extra $red;
 }
 .yellow{
-    @include pulse;
+    animation-name: pulse3;
+    animation-duration: $duration*2;
+    animation-iteration-count: infinite;
     box-shadow:inset 0px 0px $blur $extra $yellow;
 }
 .other{
-    @include pulse;
+    animation-name: pulse;
+    animation-duration: $duration;
+    animation-iteration-count: infinite;
     box-shadow:inset 0px 0px $blur $extra $other;
 }
 .green{
-    @include pulse2;
+    animation-name: pulse2;
+    animation-duration: $duration;
+    animation-iteration-count: 1;
     box-shadow:inset 0px 0px $blur $extra $green;
 }
 
@@ -55,4 +53,9 @@ $duration:1.5s;
     0%{opacity:0.5;}
     70%{opacity:1;}
     100%{opacity:0;}
+}
+@keyframes pulse3{
+    0%{opacity:0;}
+    30%{opacity:1;}
+    50%{opacity:0;}
 }
