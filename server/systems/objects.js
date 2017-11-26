@@ -37,9 +37,9 @@ module.exports = (io,Ship) =>{
             let newUUUID = uuid()
             newobjects[newUUUID] = data
             this.set("objects",newobjects)
-            newobjects = Ship.Transporters.objects
-            newobjects[newUUUID] = {[newUUUID]: {range: 0, override: 0, subResidences: {}, objects: {}}}
-            Ship.Transporters.set("objects", newobjects)
+            let traobjects = Ship.Transporters.objects
+            traobjects[newUUUID] = {[newUUUID]: {range: 0, override: 0, subResidences: {}, objects: {}}}
+            Ship.Transporters.set("objects", traobjects)
         }
         removeObject(uuid){
             let newobjects = this.objects
