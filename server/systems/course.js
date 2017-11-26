@@ -61,7 +61,7 @@ module.exports = (io,Ship) =>{
             Ship.Power.watch("Thrusters",this.thrustersPowerChanged)
             Ship.Health.watch("Radar",this.radarHealthChanged)
             Ship.Power.watch("Radar",this.radarPowerChanged)
-            updateRotation()
+            this.updateRotation()
         }
     }
     return new Course()
