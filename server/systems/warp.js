@@ -34,8 +34,8 @@ module.exports = (io,Ship) =>{
             }
         }
         setupWatches(){
-            Ship.Power.watch("Warp",this.powerChanged)
-            Ship.Health.watch("Warp",this.healthChanged)
+            Ship.Power.watch("Warp",Ship.Warp.powerChanged)
+            Ship.Health.watch("Warp",Ship.Warp.healthChanged)
         }
     }
     return new Warp()
