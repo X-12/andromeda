@@ -4,12 +4,6 @@ module.exports = (io,Ship) =>{
     const System = require("./system")(io,Ship)
     const uuid = require("uuid/v4")
     const _ = require("lodash")
-    const distance = (p1,p2) => {
-        return distancep(p1[0],p1[1],p1[2],p2[0],p2[1],p2[2])
-    }
-    const distancep = (x1,y1,z1,x2,y2,z2) => {
-        return Math.sqrt((x2-x1)*(x2-x1)+(y2-y1)*(y2-y1)+(y2-y1)*(y2-y1))
-    }
     const shipid = Ship.Objects.shipid
     class Transporters extends System{
         constructor(){
@@ -123,15 +117,17 @@ module.exports = (io,Ship) =>{
             Ship.Power.watch("Transporters", this.powerChanged)
         }
         objectsUpdated(){
+            let temp = this.objects
             for(var key in Ship.Objects.objects){
                 if(Ship.Objects.objects.hasOwnProperty(key) && key != Ship.Objects.shipid){
-                    if(distance(Ship.Objects.objects[shipid].position, Ship.Objects.objects[key]) < (Ship.Power.Transporters/Ship.Defaults.Power.Transporters)*Ship.Defaults.Transporters.Range){
-                        this.objects[key].range = 1
+                    if(Ship.Radar.position.sub(Ship.Radar.objects[key].position).length() <= (Ship.Power.Transporters/Ship.Defaults.Power.Transporters)*Ship.Defaults.Transporters.Range){
+                        temp[key].range = 1
                     } else {
-                        this.objects[key].range = 0
+                        temp[key].range = 0
                     }
                 }
             }
+            this.setT("online", temp)
         }
         healthChanged(){
             if(Ship.Health.Transporters < Ship.Defaults.Transporters.minhealth){
@@ -143,9 +139,9 @@ module.exports = (io,Ship) =>{
         powerChanged(){
             if(Ship.Power.Transporters < Ship.Defaults.Transporters.minpower){
                 this.set("online", false)
-            } else [
+            } else {
                 this.set("online", true)
-            ]
+            }
         }
     }
     return new Transporters()
