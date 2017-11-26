@@ -1,0 +1,58 @@
+$blur:100px;
+$extra:20px;
+
+$red:#FF0000;
+$yellow:#FFFF00;
+$other:#0000FF;
+$green:#00FF00;
+
+$duration:1.5s;
+
+.alertlight{
+    position:absolute;
+    top:0px;
+    left:0px;
+    width:100%;
+    height:100%;
+    opacity:0;
+    transition:opacity 0.5s;
+}
+@mixin pulse{
+    animation-name: pulse;
+    animation-duration: $duration;
+    animation-iteration-count: infinite;
+}
+@mixin pulse2{
+    animation-name: pulse2;
+    animation-duration: $duration;
+    animation-iteration-count: 1;
+}
+.red{
+    @include pulse;
+    box-shadow:inset 0px 0px $blur $extra $red;
+}
+.yellow{
+    @include pulse;
+    box-shadow:inset 0px 0px $blur $extra $yellow;
+}
+.other{
+    @include pulse;
+    box-shadow:inset 0px 0px $blur $extra $other;
+}
+.green{
+    @include pulse2;
+    box-shadow:inset 0px 0px $blur $extra $green;
+}
+
+
+
+@keyframes pulse{
+    0%{opacity:0.3;}
+    60%{opacity:1;}
+    100%{opacity:0.3;}
+}
+@keyframes pulse2{
+    0%{opacity:0.5;}
+    70%{opacity:1;}
+    100%{opacity:0;}
+}
