@@ -53,6 +53,7 @@ module.exports = (io,Ship) =>{
                 let wantedquaternion = Quaternion.rotationFromTo([0,0,-1],Ship.Objects.objects[Ship.Objects.shipid].position.sub(this.target))
                 //interpolate between current quaternion and wanted quaternion
                 Ship.Objects.objects[Ship.Objects.shipid].rotation = Quaternion.slerp(Ship.Objects.objects[Ship.Objects.shipid].rotation,wantedquaternion,Ship.Defaults.Course.Factor*delta)
+                Ship.Objects.setT("objects",Ship.Objects.objects)
             }
             setImmediate(()=>{this.updateRotation()})
         }

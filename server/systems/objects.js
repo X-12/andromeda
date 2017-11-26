@@ -66,7 +66,7 @@ module.exports = (io,Ship) =>{
                     newobjects[key].position = newobjects[key].position.add(newobjects[key].rotation.rotate(newobjects[key].velocity).multScalar(delta))
                 }
             }
-            this.set("objects",newobjects)
+            this.setT("objects",newobjects)
             setImmediate(()=>{this.updateObjects()})
         }
         stuffChanged(){

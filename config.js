@@ -103,6 +103,9 @@ module.exports = {
         minradarpower:75,
         Factor:0.1
     },
+    System:{
+        throttle:100
+    },
     MVS:{
         screen: "landing"
     },
