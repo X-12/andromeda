@@ -10,7 +10,6 @@ module.exports = (io) => {
             io.on("Objectives.message", (data) => {
                 this.setState({objectives: data})
             })
-            io.emit("Objectives.setMessage","Hello *world*")
         }
         render(){
             return (
