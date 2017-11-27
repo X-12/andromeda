@@ -112,9 +112,9 @@ module.exports = (io,Ship) =>{
             this.set("objects", temp)
         }
         setupWatches(){
-            Ship.Objects.watch("objects", this.objectsUpdated)
-            Ship.Health.watch("Transporters", this.healthChanged)
-            Ship.Power.watch("Transporters", this.powerChanged)
+            Ship.Objects.watch("objects", Ship.Transporters.objectsUpdated)
+            Ship.Health.watch("Transporters", Ship.Transporters.healthChanged)
+            Ship.Power.watch("Transporters", Ship.Transporters.powerChanged)
         }
         objectsUpdated(){
             let temp = this.objects
@@ -127,7 +127,7 @@ module.exports = (io,Ship) =>{
                     }
                 }
             }
-            this.setT("online", temp)
+            this.set("online", temp)
         }
         healthChanged(){
             if(Ship.Health.Transporters < Ship.Defaults.Transporters.minhealth){
