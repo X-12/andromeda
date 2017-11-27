@@ -75,12 +75,12 @@ module.exports = (io,Ship) =>{
         }
         setupWatches(){
             this.updateObjects()
-            let test = ["x","y","z","h","p","r"]
-            test.forEach((value)=>{
-                Ship.Thrusters.watch(value,this.stuffChanged)
+            const thrusters = ["x","y","z","h","p","r"]
+            thrusters.forEach((value)=>{
+                Ship.Thrusters.watch(value,Ship.Objects.stuffChanged)
             })
-            Ship.Warp.watch("speed",this.stuffChanged)
-            Ship.Impulse.watch("speed",this.stuffChanged)
+            Ship.Warp.watch("speed",Ship.Objects.stuffChanged)
+            Ship.Impulse.watch("speed",Ship.Objects.stuffChanged)
         }
     }
     return new Objects()
