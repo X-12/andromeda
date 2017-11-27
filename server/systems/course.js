@@ -57,10 +57,10 @@ module.exports = (io,Ship) =>{
             setImmediate(()=>{this.updateRotation()})
         }
         setupWatches(){
-            Ship.Health.watch("Thrusters",this.thrustersHealthChanged)
-            Ship.Power.watch("Thrusters",this.thrustersPowerChanged)
-            Ship.Health.watch("Radar",this.radarHealthChanged)
-            Ship.Power.watch("Radar",this.radarPowerChanged)
+            Ship.Health.watch("Thrusters",Ship.Course.thrustersHealthChanged)
+            Ship.Power.watch("Thrusters",Ship.Course.thrustersPowerChanged)
+            Ship.Health.watch("Radar",Ship.Course.radarHealthChanged)
+            Ship.Power.watch("Radar",Ship.Course.radarPowerChanged)
             updateRotation()
         }
     }

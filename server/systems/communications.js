@@ -81,7 +81,7 @@ module.exports = (io,Ship) =>{
             this.set("inbox",newinbox)
         }
         connectToNetwork(name,options){
-            //if(Ship.Power.Communications > some value && Ship.Health.Communications > some value){
+            if(Ship.Power.Communications > Ship.Defaults.Communications.minpower && Ship.Health.Communications > Ship.Defaults.Communications.minhealth){
             if(this.network[name].login == "none"){
                 this.set("network",name)
             }
@@ -104,7 +104,7 @@ module.exports = (io,Ship) =>{
             if(this.network[name].login == "approval"){
                 this.set("waiting",name)
             }
-            //}
+            }
         }
         removeMessageFromInbox(index){
             let newinbox = this.inbox

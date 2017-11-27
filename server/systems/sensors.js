@@ -55,20 +55,20 @@ module.exports = (io,Ship) =>{
             })
         }
         setupWatches(){
-            //Ship.Power.watch("Sensors",this.powerChanged)
-            //Ship.Health.watch("Sensors",this.healthChanged)
+            Ship.Power.watch("Sensors",this.powerChanged)
+            Ship.Health.watch("Sensors",this.healthChanged)
         }
         powerChanged(){
-            /*if(Ship.Power.Sensors < some value){
+            if(Ship.Power.Sensors < Ship.Defaults.Sensors.minpower){
                 this.set("scanning","")
                 this.set("analysing","")
-            }*/
+            }
         }
         healthChanged(){
-            /*if(Ship.Health.Sensors < some value){
+            if(Ship.Health.Sensors < Ship.Defaults.Sensors.minhealth){
                 this.set("scanning","")
                 this.set("analysing","")
-            }*/
+            }
         }
     }
     return new Sensors()

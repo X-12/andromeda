@@ -12,14 +12,14 @@ module.exports = (io,Ship) =>{
             if(typeof value == "boolean"){
                 if(value == true){
 
-                    /*if(Ship.Power.LifeSupport < Ship.Defaults.LifeSupport.minpower){
+                    if(Ship.Power.LifeSupport < Ship.Defaults.LifeSupport.minpower){
                         //insufficient power
                         return
                     }
                     if(Ship.Health.LifeSupport < Ship.Defaults.LifeSupport.minhealth){
                         //insufficient health
                         return
-                    }*/
+                    }
                     this.set("status",true)
                 }
                 else{
@@ -37,21 +37,21 @@ module.exports = (io,Ship) =>{
             })
         }
         setupWatches(){
-            Ship.Power.watch("LifeSupport",this.powerChanged)
-            Ship.Health.watch("LifeSupport",this.healthChanged)
+            Ship.Power.watch("LifeSupport",Ship.LifeSupport.powerChanged)
+            Ship.Health.watch("LifeSupport",Ship.LifeSupport.healthChanged)
         }
         powerChanged(){
-            /*
+            
             if(Ship.Power.LifeSupport < Ship.Defaults.LifeSupport.minpower){
                 this.set("status",false)
-            }*/
+            }
             
         }
         healthChanged(){
-            /*
+            
             if(Ship.Health.LifeSupport < Ship.Defaults.LifeSupport.minhealth){
                 this.set("status",false)
-            }*/
+            }
             
         }
     }

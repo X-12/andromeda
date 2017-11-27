@@ -52,7 +52,9 @@ module.exports = {
         minpower:50
     },
     Communications:{
-        networks:{"Public":{login:"none"},"Starfleet":{login:"password",password:"beammeupscotty"},"StarfleetElite":{login:"password+approval",password:"makeitso"},"Direct":{login:"approval"}}
+        networks:{"Public":{login:"none"},"Starfleet":{login:"password",password:"beammeupscotty"},"StarfleetElite":{login:"password+approval",password:"makeitso"},"Direct":{login:"approval"}},
+        minpower:50,
+        minhealth:50
     },
     Repair: {
         steps: [
@@ -93,6 +95,10 @@ module.exports = {
         minhealth:50,
         targetrange:50,
         loserange:70
+    },
+    Sensors:{
+        minpower:50,
+        minhealth:50
     },
     Course:{
         target:new Vec3(0,0,0),
