@@ -6,6 +6,7 @@ module.exports = (io,Ship) =>{
             this.callbacks = {}
             this.name = name
             this.lastTime = null
+            this.timeout = null
         }
         set(ident,value){
             this[ident] = value
@@ -18,6 +19,15 @@ module.exports = (io,Ship) =>{
             else{
                 this.callbacks[ident] = []
             } 
+        }
+        setT(ident,value){
+            this[ident] = value
+            if(this.timeout == null){
+                this.timeout = setTimeout(()=>{
+                    this.set(ident,value)
+                    this.timeout=null
+                },Ship.Defaults.System.throttle)
+            }
         }
         watch(ident,callback){
             if(this.callbacks.hasOwnProperty(ident)){
