@@ -52,7 +52,9 @@ module.exports = {
         minpower:50
     },
     Communications:{
-        networks:{"Public":{login:"none"},"Starfleet":{login:"password",password:"beammeupscotty"},"StarfleetElite":{login:"password+approval",password:"makeitso"},"Direct":{login:"approval"}}
+        networks:{"Public":{login:"none"},"Starfleet":{login:"password",password:"beammeupscotty"},"StarfleetElite":{login:"password+approval",password:"makeitso"},"Direct":{login:"approval"}},
+        minpower:50,
+        minhealth:50
     },
     Repair: {
         steps: [
@@ -74,6 +76,9 @@ module.exports = {
     Authentication:{
         list:[]
     },
+    Explosions:{
+        degreesperpixel: 0.1
+    },
     Radar:{
         minpower:50,
         minhealth:50,
@@ -94,6 +99,10 @@ module.exports = {
         targetrange:50,
         loserange:70
     },
+    Sensors:{
+        minpower:50,
+        minhealth:50
+    },
     Course:{
         target:new Vec3(0,0,0),
         status:false,
@@ -102,6 +111,9 @@ module.exports = {
         minradarhealth:75,
         minradarpower:75,
         Factor:0.1
+    },
+    System:{
+        throttle:100
     },
     MVS:{
         screen: "landing"
