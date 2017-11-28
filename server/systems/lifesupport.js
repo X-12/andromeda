@@ -30,6 +30,26 @@ module.exports = (io,Ship) =>{
                 console.error("Invalid type "+typeof value+" for LifeSupport.setStatus")
             }
         }
+        updateOxygen(){
+            let delta = this.getDelta()/1000
+            if(this.status == true){
+                if(this.oxygen < 100){
+                this.setT("oxygen",this.oxygen+Ship.Defaults.LifeSupport.replenishRate*delta)
+                }
+                else{
+                    this.setT("oxygen",100)
+                }
+            }
+            else{
+                if(this.oxygen > 0){
+                    this.setT("oxygen",this.oxygen-Ship.Defaults.LifeSupport.depletionRate*delta)
+                }
+                else{
+                    this.setT("oxygen",0)
+                }
+            }
+            setImmediate(()=>{this.updateOxygen()})
+        }
         setupSocket(socket){
             super.setupSocket(socket)
             socket.on("LifeSupport.setStatus", (value) => {
@@ -37,8 +57,9 @@ module.exports = (io,Ship) =>{
             })
         }
         setupWatches(){
-            Ship.Power.watch("LifeSupport",Ship.LifeSupport.powerChanged)
-            Ship.Health.watch("LifeSupport",Ship.LifeSupport.healthChanged)
+            Ship.Power.watch("LifeSupport",this.powerChanged,Ship.LifeSupport)
+            Ship.Health.watch("LifeSupport",this.healthChanged,Ship.LifeSupport)
+            this.updateOxygen()
         }
         powerChanged(){
             

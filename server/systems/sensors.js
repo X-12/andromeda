@@ -55,8 +55,8 @@ module.exports = (io,Ship) =>{
             })
         }
         setupWatches(){
-            Ship.Power.watch("Sensors",this.powerChanged)
-            Ship.Health.watch("Sensors",this.healthChanged)
+            Ship.Power.watch("Sensors",this.powerChanged,Ship.Sensors)
+            Ship.Health.watch("Sensors",this.healthChanged,Ship.Sensors)
         }
         powerChanged(){
             if(Ship.Power.Sensors < Ship.Defaults.Sensors.minpower){
