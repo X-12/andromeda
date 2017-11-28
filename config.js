@@ -13,6 +13,7 @@ module.exports = {
         Radar:100,
         Thrusters:100,
         Targeting: 100,
+        Transporters: 100,
         Available: 0
     },
     Health: {
@@ -24,7 +25,8 @@ module.exports = {
         Hull: 100,
         Radar: 100,
         Thrusters:100,
-        Targeting: 100
+        Targeting: 100,
+        Transporters: 100
     },
     Alert: {
         status: 3
@@ -118,5 +120,11 @@ module.exports = {
     MVS:{
         screen: "landing"
     },
-    Media
+    Media,
+    Transporters: {
+        minhealth: 50,
+        minpower: 50,
+        range: 100,
+        online: true
+    }
 }

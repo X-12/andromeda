@@ -13,6 +13,7 @@ module.exports = (io,Ship) =>{
             this.set("Radar", Ship.Defaults.Power.Radar)
             this.set("Thrusters", Ship.Defaults.Power.Thrusters)
             this.set("Targeting", Ship.Defaults.Power.Targeting)
+            this.set("Transporters", Ship.Defaults.Power.Transporters)
             this.set("Available", Ship.Defaults.Power.Available)
         }
         allocatePower(value){

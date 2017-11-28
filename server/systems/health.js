@@ -14,6 +14,7 @@ module.exports = (io,Ship) => {
             this.set("Thrusters", Ship.Defaults.Health.Thrusters)
             this.set("Targeting", Ship.Defaults.Health.Targeting)
             this.set("Hull", Ship.Defaults.Health.Hull)
+            this.set("Transporters", Ship.Defaults.Health.Transporters)
         }
         setupSocket(socket){
             super.setupSocket(socket)
