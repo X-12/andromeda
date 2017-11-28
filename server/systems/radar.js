@@ -19,9 +19,9 @@ module.exports = (io,Ship) =>{
             super.setupSocket()
         }
         setupWatches(){
-            Ship.Objects.watch("objects",this.objectsUpdated)
-            Ship.Health.watch("Radar",this.healthChanged)
-            Ship.Power.watch("Radar",this.powerChanged)
+            Ship.Objects.watch("objects",Ship.Radar.objectsUpdated)
+            Ship.Health.watch("Radar",Ship.Radar.healthChanged)
+            Ship.Power.watch("Radar",Ship.Radar.powerChanged)
             this.objectsUpdated()
         }
         objectsUpdated(){

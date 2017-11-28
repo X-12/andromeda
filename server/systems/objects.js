@@ -73,7 +73,7 @@ module.exports = (io,Ship) =>{
                     newobjects[key].position = newobjects[key].position.add(newobjects[key].rotation.rotate(newobjects[key].velocity).multScalar(delta))
                 }
             }
-            this.set("objects",newobjects)
+            this.setT("objects",newobjects)
             setImmediate(()=>{this.updateObjects()})
         }
         stuffChanged(){
@@ -82,11 +82,12 @@ module.exports = (io,Ship) =>{
         }
         setupWatches(){
             this.updateObjects()
-            ["x","y","z","h","p","r"].forEach((value)=>{
-                Ship.Thrusters.watch(value,this.stuffChanged)
+            const thrusters = ["x","y","z","h","p","r"]
+            thrusters.forEach((value)=>{
+                Ship.Thrusters.watch(value,Ship.Objects.stuffChanged)
             })
-            Ship.Warp.watch("speed",this.stuffChanged)
-            Ship.Impulse.watch("speed",this.stuffChanged)
+            Ship.Warp.watch("speed",Ship.Objects.stuffChanged)
+            Ship.Impulse.watch("speed",Ship.Objects.stuffChanged)
         }
     }
     return new Objects()

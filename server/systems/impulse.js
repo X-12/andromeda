@@ -34,8 +34,8 @@ module.exports = (io,Ship) =>{
             }
         }
         setupWatches(){
-            Ship.Power.watch("Impulse",this.powerChanged)
-            Ship.Health.watch("Impulse",this.healthChanged)
+            Ship.Power.watch("Impulse",Ship.Impulse.powerChanged)
+            Ship.Health.watch("Impulse",Ship.Impulse.healthChanged)
         }
     }
     return new Impulse()

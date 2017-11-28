@@ -53,15 +53,16 @@ module.exports = (io,Ship) =>{
                 let wantedquaternion = Quaternion.rotationFromTo([0,0,-1],Ship.Objects.objects[Ship.Objects.shipid].position.sub(this.target))
                 //interpolate between current quaternion and wanted quaternion
                 Ship.Objects.objects[Ship.Objects.shipid].rotation = Quaternion.slerp(Ship.Objects.objects[Ship.Objects.shipid].rotation,wantedquaternion,Ship.Defaults.Course.Factor*delta)
+                Ship.Objects.setT("objects",Ship.Objects.objects)
             }
             setImmediate(()=>{this.updateRotation()})
         }
         setupWatches(){
-            Ship.Health.watch("Thrusters",this.thrustersHealthChanged)
-            Ship.Power.watch("Thrusters",this.thrustersPowerChanged)
-            Ship.Health.watch("Radar",this.radarHealthChanged)
-            Ship.Power.watch("Radar",this.radarPowerChanged)
-            updateRotation()
+            Ship.Health.watch("Thrusters",Ship.Course.thrustersHealthChanged)
+            Ship.Power.watch("Thrusters",Ship.Course.thrustersPowerChanged)
+            Ship.Health.watch("Radar",Ship.Course.radarHealthChanged)
+            Ship.Power.watch("Radar",Ship.Course.radarPowerChanged)
+            this.updateRotation()
         }
     }
     return new Course()
