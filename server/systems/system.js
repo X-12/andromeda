@@ -13,7 +13,7 @@ module.exports = (io,Ship) =>{
             io.emit(this.name+"."+ident,value)
             if(this.callbacks.hasOwnProperty(ident)){
                 for(var i in this.callbacks[ident]){
-                    setImmediate(()=>{this.callbacks[ident][i]()})
+                    setImmediate(()=>{this.callbacks[ident][i][0].call(this.callbacks[ident][i][1])})
                 }
             }
             else{
@@ -29,9 +29,9 @@ module.exports = (io,Ship) =>{
                 },Ship.Defaults.System.throttle)
             }
         }
-        watch(ident,callback){
+        watch(ident,callback,context){
             if(this.callbacks.hasOwnProperty(ident)){
-                this.callbacks[ident].push(callback)
+                this.callbacks[ident].push([callback,context])
             }
             else{
                 this.callbacks[ident] = [callback]
@@ -43,6 +43,13 @@ module.exports = (io,Ship) =>{
             for(var ident in this.callbacks){
                 if(this.callbacks.hasOwnProperty(ident)){
                     socket.emit(this.name+"."+ident,this[ident])
+                }
+            }
+        }
+        updateAll(){
+            for(var ident in this.callbacks){
+                if(this.callbacks.hasOwnProperty(ident)){
+                    this.set(ident,this[ident])
                 }
             }
         }

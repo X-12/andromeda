@@ -15,13 +15,13 @@ module.exports = (io,Ship) =>{
             this.set("velocity",new Vec3([0,0,0]))
             this.set("angular",Quaternion.identity())
         }
-        setupSocket(){
-            super.setupSocket()
+        setupSocket(socket){
+            super.setupSocket(socket)
         }
         setupWatches(){
-            Ship.Objects.watch("objects",Ship.Radar.objectsUpdated)
-            Ship.Health.watch("Radar",Ship.Radar.healthChanged)
-            Ship.Power.watch("Radar",Ship.Radar.powerChanged)
+            Ship.Objects.watch("objects",this.objectsUpdated,Ship.Radar)
+            Ship.Health.watch("Radar",this.healthChanged,Ship.Radar)
+            Ship.Power.watch("Radar",this.powerChanged,Ship.Radar)
             this.objectsUpdated()
         }
         objectsUpdated(){
