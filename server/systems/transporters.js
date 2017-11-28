@@ -112,9 +112,9 @@ module.exports = (io,Ship) =>{
             this.set("objects", temp)
         }
         setupWatches(){
-            Ship.Objects.watch("objects", Ship.Transporters.objectsUpdated)
-            Ship.Health.watch("Transporters", Ship.Transporters.healthChanged)
-            Ship.Power.watch("Transporters", Ship.Transporters.powerChanged)
+            Ship.Objects.watch("objects", this.objectsUpdated,Ship.Transporters)
+            Ship.Health.watch("Transporters", this.healthChanged,Ship.Transporters)
+            Ship.Power.watch("Transporters", this.powerChanged,Ship.Transporters)
         }
         objectsUpdated(){
             let temp = this.objects
