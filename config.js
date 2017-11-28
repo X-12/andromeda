@@ -33,7 +33,9 @@ module.exports = {
         status: false,
         oxygen: 100, 
         minpower: 50,
-        minhealth: 50
+        minhealth: 50,
+        depletionRate: 1,
+        replenishRate: 0.5
     },
     Lights: {
         on: false
