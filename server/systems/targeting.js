@@ -12,9 +12,9 @@ module.exports = (io,Ship) =>{
             super.setupSocket(socket)
         }
         setupWatches(){
-            Ship.Health.watch("Targeting",Ship.Targeting.healthChanged)
-            Ship.Power.watch("Targeting",Ship.Targeting.powerChanged)
-            Ship.Radar.watch("objects",Ship.Targeting.radarChanged)
+            Ship.Health.watch("Targeting",this.healthChanged,Ship.Targeting)
+            Ship.Power.watch("Targeting",this.powerChanged,Ship.Targeting)
+            Ship.Radar.watch("objects",this.radarChanged,Ship.Targeting)
         }
         targetShip(uuid){
             if(Ship.Health.Targeting >= Ship.Defaults.Targeting.minhealth && Ship.Power.Targeting >= Ship.Defaults.Targeting.minpower){
@@ -34,7 +34,7 @@ module.exports = (io,Ship) =>{
             }
         }
         radarChanged(){
-            if(!Ship.Radar.objects.hasOwnProperty(this.targeted) && Ship.Radar.position.sub(Ship.Radar.objects[this.targeted]).length()<=Ship.Defaults.Targeting.loserange){
+            if(!Ship.Radar.objects.hasOwnProperty(this.targeted) || Ship.Radar.position.sub(Ship.Radar.objects[this.targeted]).length()<=Ship.Defaults.Targeting.loserange){
                 this.set("targeted","")
             }
         }

@@ -37,8 +37,8 @@ module.exports = (io,Ship) =>{
             })
         }
         setupWatches(){
-            Ship.Power.watch("LifeSupport",Ship.LifeSupport.powerChanged)
-            Ship.Health.watch("LifeSupport",Ship.LifeSupport.healthChanged)
+            Ship.Power.watch("LifeSupport",this.powerChanged,Ship.LifeSupport)
+            Ship.Health.watch("LifeSupport",this.healthChanged,Ship.LifeSupport)
         }
         powerChanged(){
             

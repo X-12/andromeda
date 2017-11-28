@@ -84,10 +84,10 @@ module.exports = (io,Ship) =>{
             this.updateObjects()
             const thrusters = ["x","y","z","h","p","r"]
             thrusters.forEach((value)=>{
-                Ship.Thrusters.watch(value,Ship.Objects.stuffChanged)
+                Ship.Thrusters.watch(value,this.stuffChanged,Ship.Objects)
             })
-            Ship.Warp.watch("speed",Ship.Objects.stuffChanged)
-            Ship.Impulse.watch("speed",Ship.Objects.stuffChanged)
+            Ship.Warp.watch("speed",this.stuffChanged,Ship.Objects)
+            Ship.Impulse.watch("speed",this.stuffChanged,Ship.Objects)
         }
     }
     return new Objects()
