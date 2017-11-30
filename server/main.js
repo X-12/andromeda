@@ -24,7 +24,7 @@ Ship.LifeSupport = require('./systems/lifesupport')(io,Ship)
 Ship.Communications = require('./systems/communications')(io,Ship)
 Ship.Repair = require('./systems/repair')(io,Ship)
 Ship.MVS = require('./systems/mvs')(io,Ship)
-Ship.Transporters = require('./systems/Transporters')(io, Ship)
+Ship.Transporters = require('./systems/transporters')(io, Ship)
 for(var key in Ship){
     if(Ship.hasOwnProperty(key) && key != "Defaults"){
         Ship[key].setupWatches()
