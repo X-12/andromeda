@@ -1,8 +1,8 @@
 "use strict";
 const React = require('react')
 const styles = require ('../../styles/systems/thrusters.scss')
-const order = [["x","y"],["r","z"],["h","p"]]
-const orderc = [["X","Y"],["R","Z"],["H","P"]]
+const order = [["x","p"],["r","z"],["h","y"]]
+const orderc = [["X","P"],["R","Z"],["H","Y"]]
 
 module.exports = (io) => {
     class Thrusters extends React.Component {
@@ -57,21 +57,29 @@ module.exports = (io) => {
             }
         }
         render(){
-            let boxes = [];
-            let indices = [0,1,2]
-            indices.forEach((i)=>{
-                boxes.push(
-                <svg key={i} className={styles.box} width="100" height="100" onMouseDown={(event)=>{this.mouseDown(i,event)}} onMouseMove={(event)=>{this.mouseDrag(i,event)}} onMouseUp={()=>{this.mouseDone(i)}} onMouseLeave={()=>{this.mouseExit(i)}}>
-                <rect width="100" height="100" fill="rgb(0,0,0)" />
-                <line x1="50" y1="0" x2="50" y2="100" stroke="rgb(0,255,0)" strokeWidth="2" />
-                <line x1="0" y1="50" x2="100" y2="50" stroke="rgb(0,255,0)" strokeWidth="2" />
-                <circle cx={this.state[order[i][0]]*50+50} cy={this.state[order[i][1]]*-50+50} r="5" fill="rgb(0,0,255)" />
-                </svg>
-                )
-            })
             return (
                 <div>
-                    {boxes}
+                    <svg className={styles.box} width="100" height="100" onMouseDown={(event)=>{this.mouseDown(0,event)}} onMouseMove={(event)=>{this.mouseDrag(0,event)}} onMouseUp={()=>{this.mouseDone(0)}} onMouseLeave={()=>{this.mouseExit(0)}}>
+                    <rect width="100" height="100" fill="rgb(0,0,0)" />
+                    <line x1="50" y1="0" x2="50" y2="100" stroke="rgb(0,0,255)" strokeWidth="2" />
+                    <line x1="0" y1="50" x2="100" y2="50" stroke="rgb(0,255,0)" strokeWidth="2" />
+                    <circle cx={this.state[order[0][0]]*50+50} cy={this.state[order[0][1]]*-50+50} r="5" fill="rgb(255,0,0)" />
+                    </svg>
+
+                    <svg className={styles.box} width="100" height="100" onMouseDown={(event)=>{this.mouseDown(1,event)}} onMouseMove={(event)=>{this.mouseDrag(1,event)}} onMouseUp={()=>{this.mouseDone(1)}} onMouseLeave={()=>{this.mouseExit(1)}}>
+                    <rect width="100" height="100" fill="rgb(0,0,0)" />
+                    <circle cx="50" cy="50" r="50" stroke="rgb(0,0,255)" strokeWidth="2" />
+                    <circle cx="50" cy="50" r="10" stroke="rgb(0,255,0)" strokeWidth="2" />
+                    <circle cx={this.state[order[1][0]]*50+50} cy={this.state[order[1][1]]*-50+50} r="5" fill="rgb(255,0,0)" />
+                    </svg>
+
+                    <svg className={styles.box} width="100" height="100" onMouseDown={(event)=>{this.mouseDown(2,event)}} onMouseMove={(event)=>{this.mouseDrag(2,event)}} onMouseUp={()=>{this.mouseDone(2)}} onMouseLeave={()=>{this.mouseExit(2)}}>
+                    <rect width="100" height="100" fill="rgb(0,0,0)" />
+                    <line x1="50" y1="0" x2="50" y2="100" stroke="rgb(0,255,0)" strokeWidth="2" />
+                    <line x1="0" y1="50" x2="100" y2="50" stroke="rgb(0,0,255)" strokeWidth="2" />
+                    <circle cx={this.state[order[2][0]]*50+50} cy={this.state[order[2][1]]*-50+50} r="5" fill="rgb(255,0,0)" />
+                    </svg>
+
                     {this.state.persistence?<button onClick={()=>{this.setPersistence(false)}}>Turn Off Persistence</button>:<button onClick={()=>{this.setPersistence(true)}}>Turn On Persistence</button>}
                 </div>
             )
