@@ -114,7 +114,7 @@ module.exports = {
         minthrusterspower:75,
         minradarhealth:75,
         minradarpower:75,
-        Factor:0.1
+        Factor:1
     },
     System:{
         throttle:100

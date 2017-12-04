@@ -2,6 +2,9 @@
 
 module.exports = (io,Ship) =>{
     const System = require("./system")(io,Ship)
+    const alfador = require("alfador")
+    const Quaternion = alfador.Quaternion
+    const Vec3 = alfador.Vec3
     class Course extends System{
         constructor(){
             super("Course")
@@ -9,7 +12,7 @@ module.exports = (io,Ship) =>{
             this.set("status", Ship.Defaults.Course.status)
         }
         setStatus(value){
-            if(Ship.Health.Radar > Ship.Defaults.Course.mincoursehealth && Ship.Power.Radar > Ship.Defaults.Course.mincoursepower){
+            if(Ship.Health.Radar > Ship.Defaults.Course.minradarhealth && Ship.Power.Radar > Ship.Defaults.Course.minradarpower){
                 if(Ship.Health.Thrusters >= Ship.Defaults.Course.minthrustershealth && Ship.Power.Thrusters >= Ship.Defaults.Course.minthrusterspower){
                     this.set("status",value)
                 }
