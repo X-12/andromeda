@@ -18,7 +18,9 @@ module.exports = (io) => {
             })
         }
         setCourse(){
-            io.emit("Course.setTarget",new Vec3(this.state.x,this.state.y,this.state.z))
+            if(!isNaN(parseFloat(this.state.x)) && !isNaN(parseFloat(this.state.y)) && !isNaN(parseFloat(this.state.z))){
+            io.emit("Course.setTarget",new Vec3(parseFloat(this.state.x),parseFloat(this.state.y),parseFloat(this.state.z)))
+            }
         }
         setStatus(data){
             io.emit("Course.setStatus",data)
@@ -28,9 +30,9 @@ module.exports = (io) => {
                 <div>
                     Target:&lt;{this.state.target.x},{this.state.target.y},{this.state.target.z}&gt;
                     Status:{this.state.status?"True":"False"}
-                    X:<input type="number" value="0" onChange={(e)=>{this.setState({x:e.target.value})}} />
-                    Y:<input type="number" value="0" onChange={(e)=>{this.setState({y:e.target.value})}} />
-                    Z:<input type="number" value="0" onChange={(e)=>{this.setState({z:e.target.value})}} />
+                    X:<input type="number" onChange={(e)=>{this.setState({x:e.target.value})}} />
+                    Y:<input type="number" onChange={(e)=>{this.setState({y:e.target.value})}} />
+                    Z:<input type="number" onChange={(e)=>{this.setState({z:e.target.value})}} />
                     <button onClick={()=>{this.setCourse()}}>Set Course</button>
                     {this.state.status?(<button onClick={()=>{this.setStatus(false)}}>Turn Off</button>):(<button onClick={()=>{this.setStatus(true)}}>Turn On</button>)}
                 </div>
